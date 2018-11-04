@@ -1,4 +1,5 @@
 class Dish < ApplicationRecord
-  has_many :ingredients
+  has_many :dish_ingredients
+  has_many :ingredients, through: :dish_ingredients
   belongs_to :chef
 end
