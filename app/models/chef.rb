@@ -1,4 +1,4 @@
-class Chef < ApplicationRecord
+class Chef < ActiveRecord::Base
   has_many :dishes
   has_many :ingredients, through: :dishes
   has_secure_password

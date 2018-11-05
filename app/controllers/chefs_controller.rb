@@ -1,5 +1,5 @@
 class ChefsController < ApplicationController
-  has_secure_password
+
   before_action :set_chef, only: [:show, :edit, :update, :destroy]
 
   def show
