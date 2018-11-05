@@ -1,4 +1,24 @@
 class IngredientsController < ApplicationController
   def new
   end
+  def create
+    @ingredient = Ingredient.new(ingredients_params)
+    if @ingredient.save
+      
+    else
+      render :new
+    end
+  end 
+  def update
+  end
+
+
+
+private
+
+  def ingredients_params
+    params.require(:ingredient).permit(
+      :name
+      )
+  end
 end

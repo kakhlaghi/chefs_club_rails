@@ -1,0 +1,4 @@
+def SessionsController < ApplicationController
+  
+  
+end
