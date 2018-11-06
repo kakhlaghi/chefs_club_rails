@@ -2,7 +2,12 @@ class DishesController < ApplicationController
   def new
   end
   def create
-    @dish = Dish.new
+    @dish = Dish.new(dish_params)
+    if @dish.save
+      redirect_to @dish
+    else
+      render :new
+    end
   end
 
 
