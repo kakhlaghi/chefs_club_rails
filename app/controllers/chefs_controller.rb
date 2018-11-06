@@ -9,6 +9,9 @@ class ChefsController < ApplicationController
     @chef = Chef.new
   end
 
+  def edit
+  end
+
   def create
     @chef = Chef.new(chef_params)
     if @chef.save
@@ -21,10 +24,15 @@ class ChefsController < ApplicationController
 
   def update
     if @chef.update(chef_params)
-      redirect_to @user
+      redirect_to @chef
     else
       render :edit
     end
+  end
+
+  def destroy
+    @dish.destroy
+    redirect_to root_path
   end
 
   private
