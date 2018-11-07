@@ -1,5 +1,14 @@
 <%= form_for @dish do |f| %>
   Name:<%= f.text_field :name %>
   Cook Time:<%= f.text_field :cook_time %>
+
+  <%= f.collection_select :ingredient_ids, Ingredient.all, :name, :name %>
+  <br>
+  <%= f.label "Ingredients" %>
+  <%= f.fields_for :ingredients, Ingredient.new do |ingredient_fields| %>
+    <%= ingredient_fields.text_field :name %>
+    <%end%>
+  </p>
+
    <%= submit_tag 'Create Dish' %>
 <%end%>
