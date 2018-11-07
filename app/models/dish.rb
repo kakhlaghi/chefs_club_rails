@@ -3,7 +3,8 @@ class Dish < ActiveRecord::Base
   has_many :ingredients, through: :dish_ingredients
   belongs_to :chef
   accepts_nested_attributes_for :ingredients
-  
+  validates :name, presence: true
+
   def chef_name
     self.try(:chef).try(:name)
   end
