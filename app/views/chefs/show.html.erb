@@ -1,6 +1,7 @@
 <h1>Chef <%=@chef.name%></h1>
 
-<% @chef.dish.each do |dish| %>
+<% @chef.dishes.each do |dish| %>
 <ul>
   <li><a href="dish/<%=@chef.dish%>"><%= dish.name%></a></li>
 </ul>
+<%end%>
