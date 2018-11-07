@@ -2,8 +2,8 @@
 
 <% @chef.dishes.each do |dish| %>
 <ul>
-  <li><a href="dish/<%=@chef.dish%>"><%= dish.name%></a></li>
+  <li><a href="dishes/<%=dish.name%>"><%= dish.name%></a></li>
 </ul>
 <%end%>
 
-<a href="dish/new">Add a Dish</a>
+<%= link_to "Add Dish", new_dish_path %>
