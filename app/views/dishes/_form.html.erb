@@ -4,6 +4,10 @@
 
   <%= f.collection_select :ingredient_ids, Ingredient.all, :name, :name %>
   <br>
+  <%= f.label "Quantity" %>
+  <%= f.fields_for :dish_ingredients, DishIngredient.new do |quant| %>
+    <%= quant.number_field :quantity %>
+  <%end%>
   <%= f.label "Ingredients" %>
   <%= f.fields_for :ingredients, Ingredient.new do |ingredient_fields| %>
     <%= ingredient_fields.text_field :name %>
