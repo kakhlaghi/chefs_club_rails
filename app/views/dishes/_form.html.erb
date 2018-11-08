@@ -11,7 +11,7 @@
   <%= f.label "Ingredients" %>
   <%= f.fields_for :ingredients, Ingredient.new do |ingredient_fields| %>
     <%= ingredient_fields.text_field :name %>
-    <%end%>
+  <%end%>
   </p>
 
    <%= submit_tag 'Create Dish' %>

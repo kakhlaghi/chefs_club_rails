@@ -3,6 +3,7 @@ class DishesController < ApplicationController
 
   def new
     @dish = Dish.new
+    @dish.ingredients.build
   end
   def create
     @dish = Dish.new(dish_params)
@@ -33,7 +34,10 @@ class DishesController < ApplicationController
     def dish_params
       params.require(:dish).permit(
         :name,
-        :cook_time
+        :cook_time,
+        ingredients_attr: [
+          :name
+        ]
       )
     end
 end
