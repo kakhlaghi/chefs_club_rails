@@ -3,9 +3,10 @@ class SessionsController < ApplicationController
   def new
     @chef = Chef.new
     @chefs = Chef.all
+
   end
   def create
-  if auth 
+  if auth
     @chef = Chef.find_or_create_by(uid: auth['uid']) do |u|
       u.name = auth['info']['name']
       u.email = auth['info']['email']
@@ -31,9 +32,9 @@ end
     session[:user_id] = nil
     redirect_to root_url
   end
-  
+
   private
- 
+
   def auth
     request.env['omniauth.auth']
   end

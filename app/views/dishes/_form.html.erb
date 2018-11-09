@@ -2,12 +2,15 @@
   Name:<%= f.text_field :name %>
   Cook Time:<%= f.text_field :cook_time %>
 
-  <%= f.collection_select :ingredient_ids, Ingredient.all, :name, :name %>
+  <!--<%= f.collection_select :ingredient_ids, Ingredient.all, :name, :name %>-->
   <br>
   <%= f.label "Quantity" %>
   <%= f.fields_for :dish_ingredients, DishIngredient.new do |quant| %>
     <%= quant.number_field :quantity %>
   <%end%>
+  <br>
+  <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
+  <br>
   <%= f.label "Ingredients" %>
   <%= f.fields_for :ingredients, Ingredient.new do |ingredient_fields| %>
     <%= ingredient_fields.text_field :name %>

@@ -1,3 +1,4 @@
+require 'pry'
 class DishesController < ApplicationController
   before_action :set_dish, only: [:show, :edit, :update, :destroy]
 
@@ -7,8 +8,9 @@ class DishesController < ApplicationController
   end
   def create
     @dish = Dish.new(dish_params)
+    binding.pry
     if @dish.save
-      redirect_to @dish
+      redirect_to chef_path(session[:user_id])
     else
       render :new
     end
@@ -27,7 +29,7 @@ class DishesController < ApplicationController
 
   def destroy
     @dish.destroy
-    redirect_to :index
+    redirect_to @dish.chef
   end
 
   private
@@ -35,9 +37,9 @@ class DishesController < ApplicationController
       params.require(:dish).permit(
         :name,
         :cook_time,
-        ingredients_attr: [
-          :name
-        ]
+        ingredients_ids:[],
+        ingredients_attributes: [:name],
+        dish_ingredients_attributes:[:quantity]
       )
     end
 end
