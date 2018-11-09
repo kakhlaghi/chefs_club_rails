@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
   elsif params
       @chef = Chef.find_by(name: params[:chef][:name])
     if @chef && @chef.authenticate(params[:chef][:password])
-      session[:user_id] = @chef.id
+      session[:chef_id] = @chef.id
       redirect_to chef_path(@chef), notice: "Welcome back, chef!"
     else
       redirect_to signin_path
@@ -29,7 +29,7 @@ end
 
 
   def destroy
-    session[:user_id] = nil
+    session[:chef_id] = nil
     redirect_to root_url
   end
 

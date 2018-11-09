@@ -38,8 +38,9 @@ class DishesController < ApplicationController
         :name,
         :cook_time,
         ingredients_ids:[],
-        ingredients_attributes: [:name],
-        dish_ingredients_attributes:[:quantity]
+        ingredient_attributes: [:name],
+        dish_ingredient_attributes:[:quantity],
+        :chef_id
       )
     end
 end
