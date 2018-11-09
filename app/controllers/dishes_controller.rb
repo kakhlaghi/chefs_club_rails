@@ -22,6 +22,7 @@ class DishesController < ApplicationController
   end
 
   def edit
+    @dish = Dish.find_by(params[:id])
   end
 
   def update

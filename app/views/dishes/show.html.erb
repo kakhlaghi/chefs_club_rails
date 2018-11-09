@@ -6,3 +6,6 @@
   <li><%= @dish.dish_ingredients[index].quantity %> <%= ingredient.name %></li> <!-- super ugly way -->
 </ul>
 <%end%>
+<br>
+<%= link_to "Edit", edit_dish_path(@dish) %><br>
+<%= link_to "Delete", controller: "dishes", action: "destroy" %>
