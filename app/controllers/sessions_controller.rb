@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       u.email = auth['info']['email']
       u.image = auth['info']['image']
     end
-    session[:user_id] = @user.id
+    session[:chef_id] = @chef.id
     redirect_to chef_path(@chef)
   elsif params
       @chef = Chef.find_by(name: params[:chef][:name])

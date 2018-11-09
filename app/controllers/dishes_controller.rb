@@ -2,15 +2,18 @@ require 'pry'
 class DishesController < ApplicationController
   before_action :set_dish, only: [:show, :edit, :update, :destroy]
 
+  def show
+  end
+
   def new
     @dish = Dish.new
     @dish.ingredients.build
   end
   def create
     @dish = Dish.new(dish_params)
-    binding.pry
+    @dish = session[:chef_id]
     if @dish.save
-      redirect_to chef_path(session[:user_id])
+      redirect_to chef_path(session[:chef_id])
     else
       render :new
     end
@@ -39,8 +42,7 @@ class DishesController < ApplicationController
         :cook_time,
         ingredients_ids:[],
         ingredient_attributes: [:name],
-        dish_ingredient_attributes:[:quantity],
-        :chef_id
+        dish_ingredient_attributes:[:quantity]
       )
     end
 end
