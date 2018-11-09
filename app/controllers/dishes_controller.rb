@@ -4,6 +4,7 @@ class DishesController < ApplicationController
 
   def show
     @dish = Dish.find(params[:id])
+    #@dish.dish_ingredients.build(:ingredient_id => 1)
   end
 
   def new
@@ -42,7 +43,7 @@ class DishesController < ApplicationController
       params.require(:dish).permit(
         :name,
         :cook_time,
-        ingredients_ids:[],
+        #ingredients_ids: [],
         ingredient_attributes: [:name],
         dish_ingredient_attributes:[:quantity]
       )

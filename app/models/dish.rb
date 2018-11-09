@@ -2,8 +2,8 @@ class Dish < ActiveRecord::Base
   has_many :dish_ingredients
   has_many :ingredients, through: :dish_ingredients
   belongs_to :chef
-  accepts_nested_attributes_for :ingredients
-  accepts_nested_attributes_for :dish_ingredients
+  #accepts_nested_attributes_for :ingredients
+  #accepts_nested_attributes_for :dish_ingredients
 
   def chef_name
     self.try(:chef).try(:name)
