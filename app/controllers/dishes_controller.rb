@@ -9,9 +9,10 @@ class DishesController < ApplicationController
     @dish = Dish.new
     @dish.ingredients.build
   end
+
   def create
     @dish = Dish.new(dish_params)
-    @dish = session[:chef_id]
+    @dish.chef_id = session[:chef_id]
     if @dish.save
       redirect_to chef_path(session[:chef_id])
     else
