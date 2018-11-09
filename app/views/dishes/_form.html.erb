@@ -11,11 +11,25 @@
     <%= quant.number_field :quantity %>
     <%end%>
   <br>
-  <%= f.label "Ingredients" %>
+  <fieldset>
+  <h3>Add new ingredient</h3><br>
+  <%= f.label "Ingredient 1" %>
+  <%= f.fields_for :ingredients, Ingredient.new do |ingredient_fields| %>
+    <%= ingredient_fields.text_field :name %>
+  <%end%>
+
+  <%= f.label "Ingredient 2" %>
+  <%= f.fields_for :ingredients, Ingredient.new do |ingredient_fields| %>
+    <%= ingredient_fields.text_field :name %>
+  <%end%>
+
+  <%= f.label "Ingredient 3" %>
   <%= f.fields_for :ingredients, Ingredient.new do |ingredient_fields| %>
     <%= ingredient_fields.text_field :name %>
   <%end%>
   </p>
+</fieldset>
 
    <%= submit_tag 'Create Dish' %>
+
 <%end%>
