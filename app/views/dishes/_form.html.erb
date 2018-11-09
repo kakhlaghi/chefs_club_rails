@@ -1,8 +1,9 @@
 <%= form_for @dish do |f| %>
   Name:<%= f.text_field :name %>
   Cook Time:<%= f.text_field :cook_time %>
-
+  <br>
   <!--<%= f.collection_select :ingredient_ids, Ingredient.all, :name, :name %>-->
+  <% if Ingredient.all != [] %>
   <br>
   <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
   <br>
@@ -10,19 +11,32 @@
   <%= f.fields_for :dish_ingredients, DishIngredient.new do |quant| %>
     <%= quant.number_field :quantity %>
     <%end%>
+  <%end%>
   <br>
   <fieldset>
-  <h3>Add new ingredient</h3><br>
+  <h3>Add new ingredients</h3><br>
+  <%= f.label "Quantity" %>
+  <%= f.fields_for :dish_ingredients, DishIngredient.new do |quant| %>
+    <%= quant.number_field :quantity %>
+    <%end%>
   <%= f.label "Ingredient 1" %>
   <%= f.fields_for :ingredients, Ingredient.new do |ingredient_fields| %>
     <%= ingredient_fields.text_field :name %>
   <%end%>
-
+<br>
+  <%= f.label "Quantity" %>
+  <%= f.fields_for :dish_ingredients, DishIngredient.new do |quant| %>
+  <%= quant.number_field :quantity %>
+  <%end%>
   <%= f.label "Ingredient 2" %>
   <%= f.fields_for :ingredients, Ingredient.new do |ingredient_fields| %>
     <%= ingredient_fields.text_field :name %>
   <%end%>
-
+<br>
+  <%= f.label "Quantity" %>
+  <%= f.fields_for :dish_ingredients, DishIngredient.new do |quant| %>
+    <%= quant.number_field :quantity %>
+  <%end%>
   <%= f.label "Ingredient 3" %>
   <%= f.fields_for :ingredients, Ingredient.new do |ingredient_fields| %>
     <%= ingredient_fields.text_field :name %>
