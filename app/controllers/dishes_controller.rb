@@ -4,6 +4,7 @@ class DishesController < ApplicationController
 
   def show
     @dish = Dish.find(params[:id])
+    binding.pry
     #@dish.dish_ingredients.build(:ingredient_id => 1)
   end
 

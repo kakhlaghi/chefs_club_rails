@@ -20,7 +20,8 @@ private
 
   def ingredients_params
     params.require(:ingredient).permit(
-      :name
+      :name,
+      dish_ingredients_attributes: [:quantity]
       )
   end
 end
