@@ -1,8 +1,9 @@
 require 'pry'
 class DishesController < ApplicationController
-  before_action :set_dish, only: [:show, :edit, :update, :destroy]
+  #before_action :set_dish, only: [:show, :edit, :update, :destroy]
 
   def show
+    @dish = Dish.find(params[:id])
   end
 
   def new

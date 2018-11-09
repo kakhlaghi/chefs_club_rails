@@ -2,7 +2,7 @@
 
 <% @chef.dishes.each do |dish| %>
 <ul>
-  <li><a href="dishes/<%=dish.name%>"><%= dish.name%></a></li>
+  <li><a href="<%=@chef.id%>/dishes/<%=dish.id%>"><%= dish.name%></a></li>
 </ul>
 <%end%>
 

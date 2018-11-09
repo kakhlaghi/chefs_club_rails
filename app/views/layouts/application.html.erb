@@ -11,5 +11,11 @@
 
   <body>
     <%= yield %>
+    <% if current_user %>
+      <li><%= link_to "Log Out", signout_path, method: :delete %></li>
+    <% else %>
+      <li><%= link_to "Sign Up", new_chef_path %></li>
+      <li><%= link_to "Sign In", signin_path %></li>
+    <% end %>
   </body>
 </html>

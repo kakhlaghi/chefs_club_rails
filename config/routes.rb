@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   delete "/signout", to: "sessions#destroy"
   get '/auth/facebook/callback' => 'sessions#create'
 
-  #get '/chefs/:id/dishes/:id' =>
+  get '/chefs/:id/dishes/:id' => 'dishes#show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

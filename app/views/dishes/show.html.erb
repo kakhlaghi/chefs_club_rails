@@ -2,6 +2,6 @@
 
 <% @dish.ingredients.each do |ingredient| %>
 <ul>
-  <li><%= ingredient.dish_ingredients.quantity %> <%= ingredient.name %></li>
+  <li><%= @dish.dish_ingredients.quantity %> <%= ingredient.name %></li>
 </ul>
 <%end%>
