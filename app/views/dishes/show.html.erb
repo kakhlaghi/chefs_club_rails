@@ -1,7 +1,8 @@
 <h1><%=@dish.name %></h1>
-
-<% @dish.dish_ingredients.each do |dish_ingredient| %>
+<h2><%=@dish.cook_time %> minutes</h2>
+<br>
+<% @dish.ingredients.each do |ingredient| %>
 <ul>
-  <li><%= dish_ingredients.quantity %> <%= dish_ingredient.name %></li>
+  <li><%= ingredient.dish_ingredients.quantity %> <%= ingredient.name %></li>
 </ul>
 <%end%>

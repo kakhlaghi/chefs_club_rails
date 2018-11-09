@@ -21,7 +21,7 @@ class Dish < ActiveRecord::Base
           ingredient = Ingredient.find_or_create_by(name: ingredient_attributes[:name])
           if !self.ingredients.include?(ingredient)
           #self.categories << category is inefficient
-            self.ingredients.build(:ingredient => ingredient) #avoids an extra step DOES EXACTLY what we want and nothing else 53:46
+            self.ingredients.build(ingredient_attributes) #avoids an extra step DOES EXACTLY what we want and nothing else 53:46
           end
         end
       end
@@ -29,7 +29,9 @@ class Dish < ActiveRecord::Base
 
   def dish_ingredients_attributes=(dish_ingredients_attributes)
     dish_ingredients_attributes.each do |i, dish_ingredient_attributes|
-      self.dish_ingredient.build(dish_ingredient_attributes)
+      self.dish_ingredients.build(dish_ingredient_attributes)
     end
   end
+
+
 end
