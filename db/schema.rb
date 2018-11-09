@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 2018_11_06_183307) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "dish_ingredients", force: :cascade do |t|
+    t.integer "quantity"
+    t.integer "ingredient_id"
+    t.integer "dish_id"
+    t.index ["dish_id"], name: "index_dish_ingredients_on_dish_id"
+    t.index ["ingredient_id"], name: "index_dish_ingredients_on_ingredient_id"
+  end
+
   create_table "dishes", force: :cascade do |t|
     t.string "name"
     t.string "cook_time"
@@ -26,14 +34,6 @@ ActiveRecord::Schema.define(version: 2018_11_06_183307) do
     t.datetime "updated_at", null: false
     t.integer "chef_id"
     t.index ["chef_id"], name: "index_dishes_on_chef_id"
-  end
-
-  create_table "dishingredients", force: :cascade do |t|
-    t.integer "quantity"
-    t.integer "ingredient_id"
-    t.integer "dish_id"
-    t.index ["dish_id"], name: "index_dishingredients_on_dish_id"
-    t.index ["ingredient_id"], name: "index_dishingredients_on_ingredient_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
