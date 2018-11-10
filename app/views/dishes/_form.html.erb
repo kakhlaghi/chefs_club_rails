@@ -16,7 +16,7 @@
   <!-- something is wrong here... creates two dish_ingredients instead of sharing 1. come back to this -->
   <fieldset>
   <h3>Add new ingredients</h3><br>
-  <%= f.label "Ingredient 1" %>
+  <%= f.label "Ingredient" %>
   <%= f.fields_for :ingredients, Ingredient.new do |ingredient_fields| %>
     <%= ingredient_fields.text_field :name %>
     <%= f.label "Quantity" %>
@@ -27,6 +27,6 @@
 <br>
 </fieldset>
 
-   <%= submit_tag 'Create Dish' %>
+   <%= submit_tag 'Submit Dish' %>
 
 <%end%>

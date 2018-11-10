@@ -1,9 +1,9 @@
 require 'pry'
 class DishesController < ApplicationController
-  #before_action :set_dish, only: [:show, :edit, :update, :destroy]
+  before_action :set_dish, only: [:show, :edit, :update, :destroy]
 
   def show
-    @dish = Dish.find(params[:id])
+      #@dish = Dish.find(params[:id])
     #@dish.dish_ingredients.build(:ingredient_id => 1)
   end
 
@@ -39,6 +39,10 @@ class DishesController < ApplicationController
   end
 
   private
+  def set_dish
+    @dish = Dish.find(params[:id])
+  end
+
     def dish_params
       params.require(:dish).permit(
         :name,
