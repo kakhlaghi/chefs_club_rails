@@ -64,5 +64,5 @@ gem 'pry'
 gem 'rake'
 
 gem 'omniauth'
-gem 'omniauth-facebook'
+gem 'omniauth-github'
 gem 'dotenv-rails'
