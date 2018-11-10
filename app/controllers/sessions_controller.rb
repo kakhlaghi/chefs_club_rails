@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
         session[:chef_id] = @chef.id
         redirect_to chef_path(@chef)
       else
-        @chef = Chef.create(email: auth.info.email)
+        @chef = Chef.create(name: auth.info.name, email: auth.info.email, id: )
         session[:chef_id] = @chef.id
         redirect_to chef_path(@chef)
       end
@@ -27,6 +27,7 @@ class SessionsController < ApplicationController
         redirect_to signin_path
       end
     else
+      raise chef.errors.full_messages.inspect
       redirect_to signin_path
     end
   end
