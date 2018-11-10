@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
         session[:chef_id] = @chef.id
         redirect_to chef_path(@chef)
       else
-        @chef = Chef.create(name: auth.info.name, email: auth.info.email, id: )
+        @chef = Chef.create(name: auth.info.name, email: auth.info.email, password: SecureRandom.hex)
         session[:chef_id] = @chef.id
         redirect_to chef_path(@chef)
       end
