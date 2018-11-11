@@ -8,7 +8,6 @@ class SessionsController < ApplicationController
   def create
     #github login
     if auth = request.env["omniauth.auth"]
-      binding.pry
       if @chef = Chef.find_by(email: auth.info.email)
         session[:chef_id] = @chef.id
         redirect_to chef_path(@chef)

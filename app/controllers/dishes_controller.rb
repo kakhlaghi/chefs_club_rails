@@ -1,6 +1,9 @@
 require 'pry'
 class DishesController < ApplicationController
   before_action :set_dish, only: [:show, :edit, :update, :destroy]
+  scope :less_than_30 -> {where('cook_time <= 30')}
+  scope :less_than_60_more_than_30 -> {where('cook_time <= 60 && cook_time > 30')}
+  scope :more_than_60 -> {where('cook_time > 60')}
 
   def show
       #@dish = Dish.find(params[:id])
