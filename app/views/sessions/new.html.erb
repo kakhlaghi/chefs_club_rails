@@ -1,6 +1,7 @@
 <%= form_tag ({controller: 'sessions', action: 'create'}) do %>
   <!--<input name=user[name] type="text" id="name">-->
-  Name: <%=collection_select(:chef, :name, Chef.all, :name, :name)%>
-  Password: <input name=chef[password] type="text" id="password">
+  Name: <%=collection_select(:chef, :name, Chef.all, :name, :name)%><br>
+  Email: <input name=chef[email] type="text" id="email"><br>
+  Password: <input name=chef[password] type="text" id="password"><br>
   <input type="submit" value='Sign In'>
 <% end %>
