@@ -6,12 +6,12 @@
   <% if Ingredient.all != [] %>
   <br>
   <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
+  <%end%>
   <br>
   <%= f.label "Quantity" %>
   <%= f.fields_for :dish_ingredients, DishIngredient.new do |quant| %>
     <%= quant.number_field :quantity %>
     <%end%>
-  <%end%>
   <br>
   <!-- something is wrong here... creates two dish_ingredients instead of sharing 1. come back to this -->
   <fieldset>

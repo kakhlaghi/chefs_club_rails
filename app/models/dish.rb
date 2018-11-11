@@ -2,6 +2,9 @@ class Dish < ActiveRecord::Base
   has_many :dish_ingredients
   has_many :ingredients, through: :dish_ingredients
   belongs_to :chef
+  scope :less_than_30, -> {where('cook_time <= 30')}
+  scope :less_than_60_more_than_30, -> {where('cook_time <= 60', 'cook_time > 30')}
+  scope :more_than_60,-> {where('cook_time > 60')}
   #accepts_nested_attributes_for :ingredients
   #accepts_nested_attributes_for :dish_ingredients
 
