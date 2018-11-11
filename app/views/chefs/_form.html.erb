@@ -1,7 +1,10 @@
+<% if @chef.errors %>
+<%= @chef.errors.full_messages %>
+<%end%>
+
 <%= form_for @chef do |f| %>
  Name: <%= f.text_field :name %><br>
  Password: <%= f.text_field :password %><br>
  Email: <%= f.text_field :email %><br>
  <%= submit_tag 'Create Chef' %>
  <%end%>
- 
