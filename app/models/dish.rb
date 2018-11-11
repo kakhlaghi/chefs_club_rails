@@ -3,7 +3,8 @@ class Dish < ActiveRecord::Base
   has_many :ingredients, through: :dish_ingredients
   belongs_to :chef
   scope :less_than_30, -> {where('cook_time <= 30')}
-  scope :less_than_60_more_than_30, -> {where('cook_time <= 60', 'cook_time > 30')}
+  scope :more_than_30, -> {where('cook_time > 30')}
+  scope :less_than_60, -> {where('cook_time <= 60')}
   scope :more_than_60,-> {where('cook_time > 60')}
   #accepts_nested_attributes_for :ingredients
   #accepts_nested_attributes_for :dish_ingredients
@@ -32,9 +33,14 @@ class Dish < ActiveRecord::Base
 
   def dish_ingredients_attributes=(dish_ingredients_attributes)
     dish_ingredients_attributes.each do |i, dish_ingredient_attributes|
-      self.dish_ingredients.build(dish_ingredient_attributes)
+      if dish_ingredient_attributes[:dish_id].present?
+        dish_ingredient = Dish_ingredient.find_or_create_by(dish_id: dish_ingredient_attributes[:dish_id])
+        if !self.dish_ingredients.include?(dish_ingredient)
+          self.dish_ingredients.build(dish_ingredient_attributes)
+      end
     end
   end
+end
 
 
 end

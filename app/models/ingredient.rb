@@ -6,7 +6,12 @@ class Ingredient < ActiveRecord::Base
 
   def dish_ingredients_attributes=(dish_ingredients_attributes)
     dish_ingredients_attributes.each do |i, dish_ingredient_attributes|
-      self.dish_ingredients.build(dish_ingredient_attributes)
+      if dish_ingredient_attributes[:ingredient_id].present?
+        dish_ingredient = Dish_ingredient.find_or_create_by(ingredient_id: dish_ingredient_attributes[:ingredient_id])
+        if !self.dish_ingredients.include?(dish_ingredient)
+          self.dish_ingredients.build(dish_ingredient_attributes)
+        end
+      end
     end
   end
 end
