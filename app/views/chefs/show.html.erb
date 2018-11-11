@@ -1,12 +1,14 @@
 <h1>Chef <%=@chef.name%></h1>
-Quick Dishes
+<% if @chef.dishes.any? %>
+Quick Dishes:
+<br>
 <% @chef.dishes.less_than_30.each do |dish| %>
 <ul>
   <li><a href="<%=@chef.id%>/dishes/<%=dish.id%>"><%= dish.name%></a></li>
 </ul>
 <%end%>
 <br>
-Little More Time
+Little More Time:
 <br>
 <% @chef.dishes.less_than_60_more_than_30.each do |dish| %>
 <ul>
@@ -14,12 +16,15 @@ Little More Time
 </ul>
 <%end%>
 <br>
-Longer than an Hour
+Longer than an Hour:
 <br>
 <% @chef.dishes.more_than_60.each do |dish| %>
 <ul>
   <li><a href="<%=@chef.id%>/dishes/<%=dish.id%>"><%= dish.name%></a></li>
 </ul>
+<%end%>
+<%else%>
+<p> No dishes yet! </p>
 <%end%>
 
 <%= link_to "Add Dish", new_dish_path %>
