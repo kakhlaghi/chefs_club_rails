@@ -1,0 +1,23 @@
+<% if @dish.errors.any? %>
+<% @dish.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+<%end%>
+<%end%>
+
+<%= form_for @dish do |f| %>
+  Name:<%= f.text_field :name %>
+  Cook Time:<%= f.text_field :cook_time %> minutes
+  <br>
+  <fieldset>
+    <p>
+    <label>Quantity</label>
+    <input type="number" name="dish[dish_ingredients_attributes][][quantity]">
+    <label>Ingredient</label>
+    <input type="text" name="dish[ingredients_attributes][]">
+   </p>
+  </fieldset>
+
+  <%= submit_tag 'Submit Dish' %>
+
+
+<%end%>

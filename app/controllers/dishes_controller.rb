@@ -12,7 +12,10 @@ class DishesController < ApplicationController
   end
 
   def create
+    binding.pry
+
     @dish = Dish.new(dish_params)
+    #@dish.reject {|item| !item.present?}
     @dish.chef_id = session[:chef_id]
     if @dish.save
       redirect_to chef_path(session[:chef_id])
