@@ -37,8 +37,11 @@ class DishesController < ApplicationController
   end
 
   def destroy
+    binding.pry
+    @chef = @dish.chef
+    @dish.dish_ingredients.destroy_all
     @dish.destroy
-    redirect_to @dish.chef
+    redirect_to chef_path(@chef)
   end
 
   private

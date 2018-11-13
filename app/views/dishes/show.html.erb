@@ -8,4 +8,4 @@
 <%end%>
 <br>
 <%= link_to "Edit", edit_dish_path(@dish) %><br>
-<%= link_to "Delete", controller: "dishes", action: "destroy" %>
+<%= link_to "Delete", dish_path(@dish), method: :delete, data: { confirm: 'are you sure?'} %>
