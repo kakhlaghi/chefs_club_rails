@@ -6,7 +6,7 @@
 
 <%= form_for @dish do |f| %>
   Name:<%= f.text_field :name %>
-  Cook Time:<%= f.text_field :cook_time %> minutes
+  Cook Time:<%= f.number_field :cook_time %> minutes
   <br>
   <!--<%= f.collection_select :ingredient_ids, Ingredient.all, :name, :name %>
   <% if Ingredient.all != [] %>
