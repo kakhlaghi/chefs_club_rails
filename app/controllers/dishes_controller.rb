@@ -15,7 +15,6 @@ class DishesController < ApplicationController
     @dish = Dish.new(dish_params)
     #@dish.reject {|item| !item.present?}
     @dish.chef_id = session[:chef_id]
-    binding.pry
     if @dish.save
       redirect_to chef_path(session[:chef_id])
     else
@@ -24,11 +23,10 @@ class DishesController < ApplicationController
   end
 
   def edit
-    @dish = Dish.find_by(params[:id])
+    #@dish = Dish.find_by(params[:id])
   end
 
   def update
-    binding.pry
     if @dish.update(dish_params)
       redirect_to @dish
     else
@@ -37,7 +35,6 @@ class DishesController < ApplicationController
   end
 
   def destroy
-    binding.pry
     @chef = @dish.chef
     @dish.dish_ingredients.destroy_all
     @dish.destroy

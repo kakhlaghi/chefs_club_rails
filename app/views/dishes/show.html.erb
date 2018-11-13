@@ -1,9 +1,13 @@
 <h1><%=@dish.name %></h1>
 <h2><%=@dish.cook_time %> minutes</h2>
 <br>
-<% @dish.ingredients.each.with_index do |ingredient, index| %>
+<% @dish.dish_ingredients.each.with_index do |ingredient, index| %>
 <ul>
-  <li><%= @dish.dish_ingredients[index].quantity %> <%= ingredient.name %></li> <!-- super ugly way -->
+  <% if index.even? %>
+    <li><%= @dish.dish_ingredients[index].quantity %> <%= @dish.dish_ingredients[index+1].ingredient.name %></li> <!-- super ugly way -->
+    <%else%>
+    ...
+  <%end%>
 </ul>
 <%end%>
 <br>
