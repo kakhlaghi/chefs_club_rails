@@ -21,14 +21,12 @@ class Dish < ActiveRecord::Base
 
   def ingredients_attributes=(ingredients_attributes)
     ingredients_attributes.each do |i, ingredient_attributes|
-      binding.pry
-
         #category = Category.find_or_create_by(category_attributes)
-        if ingredient_attributes[:name] != ''
+        if ingredient_attributes[:name].present?
           ingredient = Ingredient.find_or_create_by(name: ingredient_attributes[:name])
           if !self.ingredients.include?(ingredient)
           #self.categories << category is inefficient
-            self.dish_ingredients.build(ingredient: ingredient, quantity: ingredients_attributes) #avoids an extra step DOES EXACTLY what we want and nothing else 53:46
+            self.ingredients.build(ingredient_attributes) #avoids an extra step DOES EXACTLY what we want and nothing else 53:46
           end
         end
       end

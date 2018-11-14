@@ -24,7 +24,7 @@
   <h3>Add new ingredients</h3><br>
   <%= f.label "Ingredient" %>
   <%= f.fields_for :ingredients, Ingredient.new do |ingredient_fields| %>
-    <%= f.text_field :name %>
+    <%= ingredient_fields.text_field :name %>
     <%= f.label "Quantity" %>
     <%= f.fields_for :dish_ingredients, DishIngredient.new do |quant| %>
       <%= quant.number_field :quantity %>

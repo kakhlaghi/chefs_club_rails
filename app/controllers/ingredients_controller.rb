@@ -5,14 +5,14 @@ class IngredientsController < ApplicationController
   end
 
   def destroy
-    @ingredient = Ingredient.find(params[:id])
+    @ingredient = Dish.Ingredient.find(params[:id])
     @ingredient.destroy
   end
 
 
 
 private
-
+  set Ingredient
 
   def ingredients_params
     params.require(:ingredient).permit(
