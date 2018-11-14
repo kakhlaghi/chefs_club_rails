@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#create'
   delete "/signout", to: "sessions#destroy"
   get '/auth/:provider/callback' => 'sessions#create'
-
+  get '/chefs/:id/dishes/new' => 'dishes#new'
   get '/chefs/:id/dishes/:id' => 'dishes#show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
