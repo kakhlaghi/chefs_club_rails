@@ -4,19 +4,15 @@ class IngredientsController < ApplicationController
     @ingredient = Ingredient.find(params[:id])
   end
 
-  #def new
-  #end
-  #def create
-  #  @ingredient = Ingredient.new(ingredients_params)
-  #  if @ingredient.save
+  def destroy
+    @ingredient = Ingredient.find(params[:id])
+    @ingredient.destroy
+  end
 
-  #  else
-  #    render :new
-  #  end
-  #end
-  #def update
-  #end
+
+
 private
+
 
   def ingredients_params
     params.require(:ingredient).permit(
