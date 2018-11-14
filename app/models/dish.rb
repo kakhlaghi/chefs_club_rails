@@ -9,6 +9,8 @@ class Dish < ActiveRecord::Base
   scope :more_than_60,-> {where('cook_time > 60')}
   accepts_nested_attributes_for :ingredients
   accepts_nested_attributes_for :dish_ingredients
+  validates :name, presence: {message:"Your dish needs a name!"}
+  validates :cook_time, numericality: { greater_than: 0 }
 
   def chef_name
     self.try(:chef).try(:name)
