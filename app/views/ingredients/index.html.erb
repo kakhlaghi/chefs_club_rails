@@ -1,0 +1,6 @@
+<h1> Ingredient Index</h1>
+
+<% @ingredients.each do |ingredient| %>
+    <li><%= ingredient.name%> Number of dishes: <%= ingredient.dishes.size%><li>
+    
+<%end%>

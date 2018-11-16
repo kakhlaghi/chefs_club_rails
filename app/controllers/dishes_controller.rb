@@ -13,6 +13,7 @@ class DishesController < ApplicationController
   end
 
   def create
+    binding.pry
     @dish = Dish.new(dish_params)
     #@dish.reject {|item| !item.present?}
     @dish.chef_id = session[:chef_id]
@@ -28,6 +29,7 @@ class DishesController < ApplicationController
   end
 
   def update
+    
     if @dish.update(dish_params)
       redirect_to @dish
     else
@@ -51,9 +53,8 @@ class DishesController < ApplicationController
       params.require(:dish).permit(
         :name,
         :cook_time,
-        ingredient_ids: [],
-        ingredients_attributes: [:name],
-        dish_ingredients_attributes: [:quantity]
+        dish_ingredients: [:quantity,
+        ingredients: [:name]]
       )
     end
 end

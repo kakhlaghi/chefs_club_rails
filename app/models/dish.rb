@@ -8,7 +8,7 @@ class Dish < ActiveRecord::Base
   scope :less_than_60, -> {where('cook_time <= 60')}
   scope :more_than_60,-> {where('cook_time > 60')}
   accepts_nested_attributes_for :ingredients
-  accepts_nested_attributes_for :dish_ingredients
+  #accepts_nested_attributes_for :dish_ingredients
   validates :name, presence: {message:"Your dish needs a name!"}
   validates :cook_time, numericality: { greater_than: 0 }
 
@@ -26,10 +26,9 @@ class Dish < ActiveRecord::Base
         #category = Category.find_or_create_by(category_attributes)
         if ingredient_attributes[:name].present?
           ingredient = Ingredient.find_or_create_by(name: ingredient_attributes[:name])
-          if !self.ingredients.include?(ingredient)
-          #self.categories << category is inefficient
-            self.ingredients.build(ingredient_attributes) #avoids an extra step DOES EXACTLY what we want and nothing else 53:46
-          end
+      #self.categories << category is inefficient
+          self.dish_ingredients.build(ingredient: ingredient, quantity: ingredients_attribute["dish_ingredients"]["quantity"]) 
+      #avoids an extra step DOES EXACTLY what we want and nothing else 53:46
         end
       end
     end #end ingredient_attributes

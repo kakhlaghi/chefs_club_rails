@@ -22,12 +22,13 @@
   <!-- something is wrong here... creates two ingredients instead of 1. come back to this -->
   <fieldset>
   <h3>Add new ingredients</h3><br>
-  <%= f.label "Ingredient" %>
-  <%= f.fields_for :ingredients, Ingredient.new do |ingredient_fields| %>
-    <%= ingredient_fields.text_field :name %>
-    <%= f.label "Quantity" %>
-    <%= f.fields_for :dish_ingredients, DishIngredient.new do |quant| %>
-      <%= quant.number_field :quantity %>
+  
+  <%= f.fields_for :dish_ingredients do |dif| %>
+    <%= dif.label "Quantity" %>
+    <%= dif.number_field :quantity %>
+    <%= dif.fields_for :ingredients do |ingr| %> <!-- can do collection select with ingr id OR have a field for a name with another nested field-->
+      <%= ingr.label "Ingredient" %>
+      <%= ingr.text_field :name %>
       <%end%>
   <%end%>
 <br>

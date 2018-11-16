@@ -7,7 +7,9 @@ class DishIngredientsController < ApplicationController
 
     def dish_ingredients_params
       params.require(:dish_ingredient).permit(
-        :quantity
+        :quantity,
+        :ingredient_id,
+        :dish_id
         )
     end
 end

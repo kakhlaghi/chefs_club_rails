@@ -9,10 +9,13 @@ class IngredientsController < ApplicationController
     @ingredient.destroy
   end
 
+  def index
+    @ingredients = Ingredient.all
+    #render :index  
+  end
 
 
 private
-  set Ingredient
 
   def ingredients_params
     params.require(:ingredient).permit(
