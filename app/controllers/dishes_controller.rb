@@ -29,7 +29,7 @@ class DishesController < ApplicationController
   end
 
   def update
-    
+
     if @dish.update(dish_params)
       redirect_to @dish
     else
@@ -53,7 +53,7 @@ class DishesController < ApplicationController
       params.require(:dish).permit(
         :name,
         :cook_time,
-        dish_ingredients: [:quantity,
+        dish_ingredients_attributes: [:quantity,
         ingredients: [:name]]
       )
     end
