@@ -3,11 +3,13 @@
 <br>
 <% @dish.dish_ingredients.each.with_index do |ingredient, index| %>
 <ul>
+  <!-- super ugly way 
   <% if index.even? %>
-    <li><%= @dish.dish_ingredients[index].quantity %> <%= @dish.dish_ingredients[index+1].ingredient.name %></li> <!-- super ugly way -->
+    <li><%= @dish.dish_ingredients[index].quantity %> <%= @dish.dish_ingredients[index+1].ingredient.name %></li> 
     <%else%>
     ...
-  <%end%>
+  <%end%> -->
+    <li><%= ingredient.quantity %> <%= @dish.ingredients[index].name %></li>
 </ul>
 <%end%>
 <br>

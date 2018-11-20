@@ -40,9 +40,9 @@ class Dish < ActiveRecord::Base
       binding.pry
       if dish_ingredient_attributes["ingredients"].present?
         #dish_ingredient = Dish_ingredients.find_or_create_by(quantity: dish_ingredient_attributes["quantity"])
-        ingredient = Ingredient.find_or_create_by(name: dish_ingredient_attributes["ingredients"])
+        ingredient = Ingredient.find_or_create_by(name: [dish_ingredient_attributes["ingredients"]["name"]])
         if !self.dish_ingredients.include?(ingredient)
-          self.dish_ingredients.build(quantity => dish_ingredient_attributes["quantity"], ingredient => ingredient)
+          self.dish_ingredients.build(:quantity => [dish_ingredient_attributes["quantity"]], :ingredient => ingredient)
       end
     end
   end
