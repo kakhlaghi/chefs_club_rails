@@ -22,24 +22,24 @@ class Dish < ActiveRecord::Base
     self.chef = chef
   end
 
-  def ingredients_attributes=(ingredients_attributes)
-    binding.pry
-    ingredients_attributes.each do |i, ingredient_attributes|
-        #category = Category.find_or_create_by(category_attributes)
-        if ingredient_attributes[:name].present?
-          ingredient = Ingredient.find_or_create_by(name: ingredient_attributes[:name])
+  #def ingredients_attributes=(ingredients_attributes)
+   # binding.pry
+    #ingredients_attributes.each do |i, ingredient_attributes|
+     #   #category = Category.find_or_create_by(category_attributes)
+      #  if ingredient_attributes[:name].present?
+       #   ingredient = Ingredient.find_or_create_by(name: ingredient_attributes[:name])
       #self.categories << category is inefficient
-          self.dish_ingredients.build(ingredient: ingredient, quantity: ingredients_attribute["dish_ingredients"]["quantity"])
+        #  self.dish_ingredients.build(ingredient: ingredient, quantity: ingredients_attribute["dish_ingredients"]["quantity"])
       #avoids an extra step DOES EXACTLY what we want and nothing else 53:46
-        end
-      end
-    end #end ingredient_attributes
+        #end
+      #end
+    #end #end ingredient_attributes
 
   def dish_ingredients_attributes=(dish_ingredients_attributes)
     dish_ingredients_attributes.each do |i, dish_ingredient_attributes|
       if dish_ingredient_attributes["ingredients"].present?
         #dish_ingredient = Dish_ingredients.find_or_create_by(quantity: dish_ingredient_attributes["quantity"])
-        ingredient = Ingredient.find_or_create_by(name: [dish_ingredient_attributes["ingredients"]["name"]])
+        ingredient = Ingredient.find_or_create_by(name: dish_ingredient_attributes["ingredients"]["name"])
         if !self.dish_ingredients.include?(ingredient)
           binding.pry
 

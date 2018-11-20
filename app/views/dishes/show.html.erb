@@ -1,9 +1,9 @@
 <h1><%=@dish.name %></h1>
 <h2><%=@dish.cook_time %> minutes</h2>
 <br>
-<% @dish.dish_ingredients.each.with_index do |ingredient, index| %>
+<% @dish.dish_ingredients.each.with_index do |di, index| %>
 <ul>
-    <li><%= ingredient.quantity %> <%= @dish.ingredients[index].name %></li>
+    <li><%= di.quantity %> <%= di.ingredient.name %></li>
 </ul>
 <%end%>
 <br>
