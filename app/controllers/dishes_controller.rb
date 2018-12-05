@@ -28,7 +28,6 @@ class DishesController < ApplicationController
   end
 
   def update
-
     if @dish.update(dish_params)
       redirect_to @dish
     else
