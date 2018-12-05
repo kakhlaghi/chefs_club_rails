@@ -26,20 +26,9 @@
 <%else%>
   <p> No dishes yet! </p>
 <%end%>
-
-<a href="#" class="js-next" data-id="<%=@chef.dish.id%>">Next Dish</a>
 <a href="/chefs/<%=@chef.id%>/dishes/new">Add a dish!</a>
 
+
 <script type="text/javascript" charset="utf-8">
- $(function() {
-   $(".js-next").on("click", function() {
-     let nextId = parseInt($(".js-next").attr("data-id")) + 1;
-     $.get("/dishes/" + nextId + ".json", function(data){
-       let dish = data;
-       $(".dishName").text(dish["name"]);
-       $(".dishCookTime").text(dish["cook_time"]);
-       $("li").text(dish["dish_ingredients"] + dish["ingredients"])
-     })
-   })
- });
+  function(){}
 </script>

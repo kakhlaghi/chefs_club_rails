@@ -1,4 +1,4 @@
-<h1><%=@dish.name %></h1>
+<!--<h1><%=@dish.name %></h1>
 <h2><%=@dish.cook_time %> minutes</h2>
 <br>
 <% @dish.dish_ingredients.each.with_index do |di, index| %>
@@ -8,8 +8,28 @@
 <%end%>
 <br>
 <%= link_to "Edit", edit_dish_path(@dish) %><br>
+<%= link_to "Delete", dish_path(@dish), method: :delete, data: { confirm: 'are you sure?'} %>-->
+
+<!-- -->
+
+<a href="#" class="js-next" data-id="<%=@dish.id%>">Next Dish</a>
+<h2 class="dishName"><%= @dish.name%></h2>
+<p class="dishCookTime"><%= @dish.cook_time%></p>
+<br>
+<%= link_to "Edit", edit_dish_path(@dish) %><br>
 <%= link_to "Delete", dish_path(@dish), method: :delete, data: { confirm: 'are you sure?'} %>
 
 <script type="text/javascript" charset="utf-8">
-  function
+  $(function() {
+    $(".js-next").on("click", function() {
+      let nextId = parseInt($(".js-next").attr("data-id")) + 1;
+      $.get("/dishes/" + nextId + ".json", function(data){
+        let dish = data;
+        $(".dishName").text(dish["name"]);
+        $(".dishCookTime").text(dish["cook_time"]);
+        $("li").text(dish["dish_ingredients"] + dish["ingredients"])
+        $(".js-next").attr("data-id", dish["id"]);
+      })
+    })
+  });
 </script>
