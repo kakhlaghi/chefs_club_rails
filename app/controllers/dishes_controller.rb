@@ -4,8 +4,11 @@ class DishesController < ApplicationController
 
   def show
     @dish = Dish.find(params[:id])
-    render json: @dish.to_json(only: [:name, :cook_time, :id],
-                              include: [ingredient: { only: [:name]}])
+    respond_to do |format|
+      format.html {render :show}
+      format.json {render json: @dish.to_json(only: [:name, :cook_time, :id],
+                                include: [ingredient: { only: [:name]}]) }
+    end
   end
 
   def new

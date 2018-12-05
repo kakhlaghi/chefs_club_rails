@@ -12,22 +12,27 @@
 
 <!-- -->
 
-<a href="#" class="js-next" data-id="<%=@dish.id%>">Next Dish</a>
+<a href="#" class="js-next" data-chef="<%=@dish.chef.id%>" data-id="<%=@dish.id%>">Next Dish</a>
 <h2 class="dishName"><%= @dish.name%></h2>
-<p class="dishCookTime"><%= @dish.cook_time%></p>
-<br>
+<p class="dishCookTime"><%= @dish.cook_time%> minutes</p>
+<% @dish.dish_ingredients.each.with_index do |di, index| %>
+<ul>
+    <li class="dishItem"><%= di.quantity %> <%= di.ingredient.name %></li>
+</ul>
+<%end%>
 <%= link_to "Edit", edit_dish_path(@dish) %><br>
 <%= link_to "Delete", dish_path(@dish), method: :delete, data: { confirm: 'are you sure?'} %>
 
 <script type="text/javascript" charset="utf-8">
   $(function() {
     $(".js-next").on("click", function() {
+      let chefId = parseInt($(".js-next").attr("data-chef"));
       let nextId = parseInt($(".js-next").attr("data-id")) + 1;
-      $.get("/dishes/" + nextId + ".json", function(data){
+      $.get("/chefs/" + chefId + "/dishes/" + nextId + ".json", function(data){
         let dish = data;
         $(".dishName").text(dish["name"]);
         $(".dishCookTime").text(dish["cook_time"]);
-        $("li").text(dish["dish_ingredients"] + dish["ingredients"])
+        $(".dishItem").text(dish["dish_ingredients"] + dish["ingredients"])//this probs needs work
         $(".js-next").attr("data-id", dish["id"]);
       })
     })
