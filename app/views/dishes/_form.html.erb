@@ -8,18 +8,7 @@
   Name:<%= f.text_field :name %>
   Cook Time:<%= f.number_field :cook_time %> minutes
   <br>
-  <!--<%= f.collection_select :ingredient_ids, Ingredient.all, :name, :name %>
-  <% if Ingredient.all != [] %>
-  <br>
-  <%= f.collection_select :ingredient_ids, Ingredient.all, :id, :name %>
-  <%end%>
-  <br>
-  <%= f.label "Quantity" %>
-  <%= f.fields_for :dish_ingredients, DishIngredient.new do |quant| %>
-    <%= quant.number_field :quantity %>
-    <%end%>
-  <br>-->
-  <!-- something is wrong here... creates two ingredients instead of 1. come back to this -->
+
   <fieldset>
   <h3>Add new ingredients</h3><br>
 
