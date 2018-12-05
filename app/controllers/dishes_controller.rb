@@ -3,9 +3,9 @@ class DishesController < ApplicationController
   before_action :set_dish, only: [:show, :edit, :update, :destroy]
 
   def show
-      #@dish = Dish.find(params[:id])
-    #@dish.dish_ingredients.build(:ingredient_id => 1)
-    binding.pry
+    @dish = Dish.find(params[:id])
+    render json: @dish.to_json(only: [:name, :cook_time, :id],
+                              include: [ingredient: { only: [:name]}])
   end
 
   def new

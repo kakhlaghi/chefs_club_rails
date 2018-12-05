@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 #js gems
 gem 'active_model_serializers'
-
+gem 'jquery-rails'
 
 #ruby '2.3.6'
 gem 'dotenv-rails', groups: [:development, :test]

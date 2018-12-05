@@ -1,4 +1,3 @@
 class DishSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description
+  attributes :id, :name, :cook_time
 end
-  

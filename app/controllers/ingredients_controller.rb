@@ -2,6 +2,7 @@ class IngredientsController < ApplicationController
 
   def show
     @ingredient = Ingredient.find(params[:id])
+    render json: @ingredient, status
   end
 
   def destroy
@@ -11,7 +12,7 @@ class IngredientsController < ApplicationController
 
   def index
     @ingredients = Ingredient.all
-    #render :index  
+    #render :index
   end
 
 
