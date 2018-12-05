@@ -32,7 +32,7 @@
         let dish = data;
         $(".dishName").text(dish["name"]);
         $(".dishCookTime").text(dish["cook_time"]);
-        $(".dishItem").text(dish["dish_ingredients"] + dish["ingredients"])//this probs needs work
+        $(".dishItem").text(dish["ingredients"])//this probs needs work
         $(".js-next").attr("data-id", dish["id"]);
       })
     })
