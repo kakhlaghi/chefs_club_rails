@@ -3,14 +3,6 @@
 $(function(){
   $('#new_ingredients').on("submit", function(event){
     event.preventDefault();
-    let posting = $.post(url, values);
-    data = {
-        'authenticity token': $("input[name='authenticity_token']").val(),
-        'dish':{
-        'dishIngredientName': $("#dish_dish_ingredients_attributes_0_ingredients_name").val(),
-        'dishIngredientQuantity': $("#dish_dish_ingredients_attributes_0_quantity").val()
-      }
-    }
     $.ajax({
         type:"PATCH",
         url: this.action,

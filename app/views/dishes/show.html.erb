@@ -24,9 +24,6 @@
 <%= link_to "Edit", edit_dish_path(@dish) %><br>
 <%= link_to "Delete", dish_path(@dish), method: :delete, data: { confirm: 'are you sure?'} %>
 
-
-
-
 <script type="text/javascript" charset="utf-8">
   $(function() {
     event.preventDefault()
@@ -37,7 +34,7 @@
         let dish = data;
         $(".dishName").text(dish["name"]);
         $(".dishCookTime").text(dish["cook_time"]);
-        $(".dishItem").text(dish["ingredients"])//this probs needs work
+        /$(".dishItem").text(dish["ingredients"]) this probs needs work/
         $(".js-next").attr("data-id", dish["id"]);
         <!-- not done -->
 
