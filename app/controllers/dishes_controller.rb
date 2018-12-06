@@ -7,8 +7,11 @@ class DishesController < ApplicationController
     respond_to do |format|
       format.html {render :show}
       format.json {render json: @dish.to_json(only: [:name, :cook_time, :id],
-                                include: [ingredient: { only: [:name]}]) }
+                                include: [ingredients: { only: [:name]}]) }
     end
+
+    #render json: @dish.to_json(only: [:name, :cook_time, :id],
+    #                          include: [ingredients: { only: [:name]}])
   end
 
   def new
