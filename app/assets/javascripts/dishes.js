@@ -1,11 +1,13 @@
 
 //form to dynamically add ingredients without having to change the page
 $(function(){
+  function listenForDishes(){
+    getAllDishes();
+  }
 
-
-
-  /*function listenForDishes(){
-}*/ 
+  /*function getAllDishes(){
+    const allDishes = 
+  }*/
 
 });
 
@@ -13,7 +15,6 @@ $(function(){
     event.preventDefault();
     let qty = document.getElementById('#dish_dish_ingredients_attributes_0_quantity')
     let name = document.getElementById('#dish_dish_ingredients_attributes_0_ingredients_name')
-
     $.ajax({
         type:"PATCH",
         url: this.action,
@@ -33,4 +34,9 @@ class Menu {
     }
 }
 
+/*Menu.prototype.sumCookTime = function(){
+    Menu
+}
+
+*/
 

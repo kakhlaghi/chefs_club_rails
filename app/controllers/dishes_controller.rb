@@ -6,8 +6,7 @@ class DishesController < ApplicationController
     @dish = Dish.find(params[:id])
     respond_to do |format|
       format.html {render :show}
-      format.json {render json: @dish.to_json(only: [:name, :cook_time, :id],
-                                include: [ingredients: { only: [:name]}]) }
+      format.json {render json: @dish}
     end
 
     #render json: @dish.to_json
