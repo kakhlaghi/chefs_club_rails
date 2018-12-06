@@ -1,29 +1,31 @@
-<!--
-<h1><%=@dish.name %></h1>
-<h2><%=@dish.cook_time %> minutes</h2>
-<br>
-<% @dish.dish_ingredients.each.with_index do |di, index| %>
-<ul>
-    <li><%= di.quantity %> <%= di.ingredient.name %></li>
-</ul>
-<%end%>
-<br>
-<%= link_to "Edit", edit_dish_path(@dish) %><br>
-<%= link_to "Delete", dish_path(@dish), method: :delete, data: { confirm: 'are you sure?'} %>
--->
-
-<!-- -->
-
 <a href="#" class="js-next" data-chef="<%=@dish.chef.id%>" data-id="<%=@dish.id%>">Next Dish</a>
 <h2 class="dishName"><%= @dish.name%></h2>
 <p class="dishCookTime"><%= @dish.cook_time%> minutes</p>
-<% @dish.dish_ingredients.each.with_index do |di, index| %>
-<ul>
-    <li class="dishItem"><%= di.quantity %> <%= di.ingredient.name %></li>
-</ul>
+<div class="ingredients">
+  <%= render 'ingredients/ingredients' %>
+</div>
+
+<%= form_for @dish do |f| %>
+  <fieldset>
+  <h3>Add new ingredients</h3><br>
+  <%= f.label "Quantity" %>
+  <%= f.fields_for :dish_ingredients, @dish.dish_ingredients.new do |dish_ingredient_fields| %>
+    <%= dish_ingredient_fields.number_field :quantity %>
+    <%= dish_ingredient_fields.label "Ingredient" %>
+    <%= dish_ingredient_fields.fields_for :ingredients, @dish.ingredients.new do |name| %>
+      <%= name.text_field :name %>
+      <%end%>
+    <%end%>
+<br>
+</fieldset>
+<%= submit_tag 'Submit Ingredient' %>
 <%end%>
+
 <%= link_to "Edit", edit_dish_path(@dish) %><br>
 <%= link_to "Delete", dish_path(@dish), method: :delete, data: { confirm: 'are you sure?'} %>
+
+
+
 
 <script type="text/javascript" charset="utf-8">
   $(function() {
@@ -37,6 +39,8 @@
         $(".dishCookTime").text(dish["cook_time"]);
         $(".dishItem").text(dish["ingredients"])//this probs needs work
         $(".js-next").attr("data-id", dish["id"]);
+        <!-- not done -->
+
       })
     })
   });

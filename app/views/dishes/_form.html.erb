@@ -28,8 +28,11 @@
 <div id="dishResult">
   <h2 id="dishName"></h2>
   <span id="dishCookTime"></span>
-  <p id="dishIngredients"></p>
+  <p id="dishIngredientName"></p>
+  <p id="dishIngredientQuantity"</p>
 </div>
+
+<!-- lets use this for the ingredients addition NOT DONE-->
 
 <script type="text/javascript" charset="utf-8">
     $(function(){
@@ -38,6 +41,7 @@
         let url = this.action
         console.log(url)
         let values = $(this).serialize();
+        console.log(values)
         let posting = $.post(url, values);
         data = {
           'authenticity token': $("input[name='authenticity_token']").val(),
@@ -48,12 +52,6 @@
             'dishIngredientQuantity': $("#dish_dish_ingredients_attributes_0_quantity").val()
           }
         }
-        posting.done(function(data){
-          let dish = data;
-          $("#dish_name").text(dish["name"]);
-          $("#dish_cook_time").text(dish["cook_time"]);
-          $("#dish_ingredients").text(dish["ingredients"]);
-        });
       });
     });
 </script>
