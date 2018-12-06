@@ -22,7 +22,30 @@
   <%end%>
 <br>
 </fieldset>
-
    <%= submit_tag 'Submit Dish' %>
-
 <%end%>
+
+
+<h1>New Dish</h1>
+
+<div id="dishResult">
+  <h2 id="dishName"></h2>
+  <span id="dishCookTime"></span>
+  <p id="dishIngredients"></p>
+</div>
+
+<script type="text/javasccript" charset="utf-8">
+    $(function(){
+      $('form').submit(function(event){
+        event.preventDefault();
+        let values = $(this).serialize();
+        let posting = $.post('/dishes', values);
+        posting.done(function(data){
+          let dish = data;
+          $("#dishName").text(dish["name"]);
+          $("#dishCookTime").text(dish["cook_time"]);
+          $("#dishIngredients").text(dish["ingredients"]);
+        });
+      });
+    });
+</script>

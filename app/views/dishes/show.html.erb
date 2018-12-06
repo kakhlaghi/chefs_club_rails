@@ -1,4 +1,5 @@
-<!--<h1><%=@dish.name %></h1>
+<!--
+<h1><%=@dish.name %></h1>
 <h2><%=@dish.cook_time %> minutes</h2>
 <br>
 <% @dish.dish_ingredients.each.with_index do |di, index| %>
@@ -8,7 +9,8 @@
 <%end%>
 <br>
 <%= link_to "Edit", edit_dish_path(@dish) %><br>
-<%= link_to "Delete", dish_path(@dish), method: :delete, data: { confirm: 'are you sure?'} %>-->
+<%= link_to "Delete", dish_path(@dish), method: :delete, data: { confirm: 'are you sure?'} %>
+-->
 
 <!-- -->
 
@@ -25,6 +27,7 @@
 
 <script type="text/javascript" charset="utf-8">
   $(function() {
+    event.preventDefault()
     $(".js-next").on("click", function() {
       let chefId = parseInt($(".js-next").attr("data-chef"));
       let nextId = parseInt($(".js-next").attr("data-id")) + 1;
