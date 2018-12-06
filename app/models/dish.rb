@@ -41,8 +41,6 @@ class Dish < ActiveRecord::Base
         #dish_ingredient = Dish_ingredients.find_or_create_by(quantity: dish_ingredient_attributes["quantity"])
         ingredient = Ingredient.find_or_create_by(name: dish_ingredient_attributes["ingredients"]["name"])
         if !self.dish_ingredients.include?(ingredient)
-          binding.pry
-
           self.dish_ingredients.build(:quantity => dish_ingredient_attributes[:quantity].to_i, :ingredient => ingredient)
       end
     end
