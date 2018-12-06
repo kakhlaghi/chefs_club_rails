@@ -10,8 +10,7 @@ class DishesController < ApplicationController
                                 include: [ingredients: { only: [:name]}]) }
     end
 
-    #render json: @dish.to_json(only: [:name, :cook_time, :id],
-    #                          include: [ingredients: { only: [:name]}])
+    #render json: @dish.to_json
   end
 
   def new

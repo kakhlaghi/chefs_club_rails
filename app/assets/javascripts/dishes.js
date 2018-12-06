@@ -1,8 +1,19 @@
 
 //form to dynamically add ingredients without having to change the page
 $(function(){
-  $('#new_ingredients').on("submit", function(event){
+
+
+
+  /*function listenForDishes(){
+}*/ 
+
+});
+
+  {$('input#new_ingredients').on("click", function(event){
     event.preventDefault();
+    let qty = document.getElementById('#dish_dish_ingredients_attributes_0_quantity')
+    let name = document.getElementById('#dish_dish_ingredients_attributes_0_ingredients_name')
+
     $.ajax({
         type:"PATCH",
         url: this.action,
@@ -13,4 +24,13 @@ $(function(){
         }
     }) 
   });
-});
+}
+
+class Menu {
+    constructor(dishes, time){
+        this.dishes=dishes;
+        this.cook_time=cook_time;
+    }
+}
+
+
