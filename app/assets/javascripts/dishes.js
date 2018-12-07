@@ -1,6 +1,6 @@
 $(function () {
 	listenForIngredientIndex()
-	listenForFetchChefs()
+	//listenForFetchChefs()
 	newIngredient()
 });
 
@@ -10,8 +10,8 @@ function listenForIngredientIndex() {
 	// fetchDishes()
 	$()
 }
-function listenForFetchChefs(){
-	$(".js-more").click(fetchChefs())	
+function listenForFetchChefs(clicked_id){
+	$(".js-more").on("click", fetchChefs())
 }
 
 // fetchers .....
@@ -19,16 +19,17 @@ function fetchDishes() {
 	// ajax   '/chefs/:id/dishes
 }
 
-function fetchChefs() {
+function fetchChefs(clicked_id) {
 	// ajax   '/chefs
 	console.log("hit fetch")
+	let id = clicked_id-1
+	console.log(id)
 	$.get("/chefs.json", function(data){
-		let chefs = ;
-	chefs.forEach(function(chef,index){
-		let dishList = "";
-		let id = index+1;
-		let newChefText = "";
+		let chefs = data;
+		let chef = chefs[id];
 		let dishes = chef["dishes"]	
+		let newChefText = "";
+		let dishList = "";
 		if(dishes === 0){
 			newChefText = "<strong>New Chef!</strong>";
 			$("#chef-" + id).html(newChefText);
@@ -38,7 +39,7 @@ function fetchChefs() {
 			})
 			$("#chef-" + id).append(dishList);
 			}
-		})
+
 	})
 }
 

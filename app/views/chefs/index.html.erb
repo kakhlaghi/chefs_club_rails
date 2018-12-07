@@ -2,9 +2,9 @@
 <% @chefs.each do |chef| %>
 
     <br>
-    <div id="chef-<%=chef.id%>"><%=chef.name%></div>
+    <div id="chef-<%=chef.id%>"><%=chef.name%>
     </br>
-    <button class="js-more" data-id="<%= chef.id %>">More Info</button>
-
-    <%end%>
+    <button id="<%=chef.id%>" class="js-more" onClick="fetchChefs(this.id)" data-id="<%= chef.id %>">More Info</button>
+    </div>
+<%end%>
 
