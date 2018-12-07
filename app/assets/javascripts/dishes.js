@@ -11,21 +11,34 @@ function listenForIngredientIndex() {
 	$()
 }
 function listenForFetchChefs(){
-	fetchChefs()
+	$(".js-more").click(fetchChefs())	
 }
 
 // fetchers .....
 function fetchDishes() {
 	// ajax   '/chefs/:id/dishes
-	fetch(/chefs/all)
 }
 
 function fetchChefs() {
 	// ajax   '/chefs
-	const chefInfo;
+	console.log("hit fetch")
 	$.get("/chefs.json", function(data){
-		let chef = data;
-		chef.forEach
+		let chefs = ;
+	chefs.forEach(function(chef,index){
+		let dishList = "";
+		let id = index+1;
+		let newChefText = "";
+		let dishes = chef["dishes"]	
+		if(dishes === 0){
+			newChefText = "<strong>New Chef!</strong>";
+			$("#chef-" + id).html(newChefText);
+		} else{
+			dishes.forEach(function(dish){
+				dishList += '<li class="js-dish">' + "Dish Name: " + dish["name"] + " Cook Time: " + dish["cook_time"] + '</li>';		
+			})
+			$("#chef-" + id).append(dishList);
+			}
+		})
 	})
 }
 

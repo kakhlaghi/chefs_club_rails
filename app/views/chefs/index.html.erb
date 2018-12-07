@@ -1,1 +1,10 @@
 <h1>All the Chefs</h1>
+<% @chefs.each do |chef| %>
+
+    <br>
+    <div id="chef-<%=chef.id%>"><%=chef.name%></div>
+    </br>
+    <button class="js-more" data-id="<%= chef.id %>">More Info</button>
+
+    <%end%>
+
