@@ -1,10 +1,12 @@
 <h1>All the Chefs</h1>
 <% @chefs.each do |chef| %>
-
     <br>
-    <div id="chef-<%=chef.id%>"><%=chef.name%>
-    </br>
+    <a href="/chefs/<%=chef.id%>"><%=chef.name%></a>
+    <br>
+    <div id="chef-<%=chef.id%>">
+    <br>
     <button id="<%=chef.id%>" class="js-more" onClick="fetchChefs(this.id)" data-id="<%= chef.id %>">More Info</button>
     </div>
+    <br>
 <%end%>
 

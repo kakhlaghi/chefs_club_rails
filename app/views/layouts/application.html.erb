@@ -12,6 +12,7 @@
   <body>
     <% if current_user %>
       <%= link_to "#{current_user.name}", chef_path(current_user) %>
+      <%= link_to "Chefs Library",  chefs_path %>
     <%end%>
 
     <%= yield %>

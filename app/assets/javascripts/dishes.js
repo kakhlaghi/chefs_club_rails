@@ -30,16 +30,15 @@ function fetchChefs(clicked_id) {
 		let dishes = chef["dishes"]	
 		let newChefText = "";
 		let dishList = "";
-		if(dishes === 0){
+		if(dishes == 0){
 			newChefText = "<strong>New Chef!</strong>";
-			$("#chef-" + id).html(newChefText);
+			$("#chef-" + clicked_id).html(newChefText);
 		} else{
 			dishes.forEach(function(dish){
-				dishList += '<li class="js-dish">' + "Dish Name: " + dish["name"] + " Cook Time: " + dish["cook_time"] + '</li>';		
+				dishList += '<ol class="js-dish">' + "Dish Name: " + dish["name"] + " | Cook Time: " + dish["cook_time"] + '</ol>';		
 			})
-			$("#chef-" + id).append(dishList);
-			}
-
+			$("#chef-" + clicked_id).html(dishList);
+		}
 	})
 }
 
