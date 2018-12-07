@@ -2,6 +2,14 @@ class ChefsController < ApplicationController
 
   before_action :set_chef, only: [:show, :edit, :update, :destroy]
 
+  def index
+    @chefs = Chef.all
+    respond_to do |format|
+      format.html {render :index}
+      format.json {render json: @chefs}
+    end
+  end
+
   def show
   end
 

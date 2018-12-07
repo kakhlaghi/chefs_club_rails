@@ -33,6 +33,7 @@
       let nextId = parseInt($(".js-next").attr("data-id")) + 1;
       $.get("/chefs/" + chefId + "/dishes/" + nextId + ".json", function(data){
         let dish = data;
+      
         $(".dishName").text(dish["name"]);
         $(".dishCookTime").text(dish["cook_time"]);
         /$(".dishItem").text(dish["ingredients"]) this probs needs work/

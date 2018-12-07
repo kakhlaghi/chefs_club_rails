@@ -1,6 +1,6 @@
 $(function () {
 	listenForIngredientIndex()
-	//listenForChefsIndex()
+	listenForFetchChefs()
 	newIngredient()
 });
 
@@ -10,18 +10,28 @@ function listenForIngredientIndex() {
 	// fetchDishes()
 	$()
 }
+function listenForFetchChefs(){
+	fetchChefs()
+}
 
 // fetchers .....
 function fetchDishes() {
 	// ajax   '/chefs/:id/dishes
+	fetch(/chefs/all)
 }
 
 function fetchChefs() {
 	// ajax   '/chefs
+	const chefInfo;
+	$.get("/chefs.json", function(data){
+		let chef = data;
+		chef.forEach
+	})
 }
 
 function fetchChefDetails() {
 	// ajax   '/chefs/:id
+	
 }
 
 function newIngredient() {
@@ -66,4 +76,11 @@ function moreIngredients (){
 
 		event.preventDefault();
 	})
+}
+
+class menu{
+	constructor(dish, price){
+		this.dish = dish;
+		this.price = price;
+	}
 }
