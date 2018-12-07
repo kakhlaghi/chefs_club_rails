@@ -26,8 +26,8 @@
 
 <script type="text/javascript" charset="utf-8">
   $(function() {
-    event.preventDefault()
-    $(".js-next").on("click", function() {
+    $(".js-next").on("click", function(event) {
+      event.preventDefault()
       let chefId = parseInt($(".js-next").attr("data-chef"));
       let nextId = parseInt($(".js-next").attr("data-id")) + 1;
       $.get("/chefs/" + chefId + "/dishes/" + nextId + ".json", function(data){
