@@ -26,12 +26,13 @@ function fetchChefDetails() {
 
 function newIngredient() {
 	// $('#new_ingredients').on("submit", function (event) {
-	$('input#new_ingredient').on("click", function (event) {
-		console.log("hit")
+	$('.edit_dish').on("submit", function (event) {
+		console.log("hit using class")
 		console.log(event)
-		let qty = $('#dish_dish_ingredients_attributes_0_quantity').val()
-		let name = $('#dish_dish_ingredients_attributes_0_ingredients_name').val()
-
+		data = {
+			quantity: $('#dish_dish_ingredients_attributes_0_quantity').val(),
+			name: $('#dish_dish_ingredients_attributes_0_ingredients_name').val()
+		}
 		event.preventDefault();
 		$.ajax({
 			type: "PATCH",

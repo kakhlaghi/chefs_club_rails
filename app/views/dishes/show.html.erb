@@ -1,6 +1,7 @@
 <a href="#" class="js-next" data-chef="<%=@dish.chef.id%>" data-id="<%=@dish.id%>">Next Dish</a>
 <h2 class="dishName"><%= @dish.name%></h2>
 <p class="dishCookTime"><%= @dish.cook_time%> minutes</p>
+<!--partial for ingredients -->
 <div class="ingredients">
   <%= render 'ingredients/ingredients' %>
 </div>
