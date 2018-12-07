@@ -29,15 +29,24 @@ function newIngredient() {
 	$('.edit_dish').on("submit", function (event) {
 		console.log("hit using class")
 		console.log(event)
-		data = {
-			quantity: $('#dish_dish_ingredients_attributes_0_quantity').val(),
-			name: $('#dish_dish_ingredients_attributes_0_ingredients_name').val()
-		}
+		/*data = {
+			'authenticity_token': $("input[name='authenticty_token']").val(),
+			'dish': {
+				'name': document.getElementsByClassName('dishName')[0].innerHTML,
+				'cook_time': parseFloat(document.getElementsByClassName('dishCookTime')[0].innerHTML),
+				'dish_ingredients_attributes':	{
+				'quantity': $('#dish_dish_ingredients_attributes_0_quantity').val(),
+					'ingredients': {
+						'name': $('#dish_dish_ingredients_attributes_0_ingredients_name').val()
+					}
+				}
+			}
+		}*/
 		event.preventDefault();
 		$.ajax({
 			type: "PATCH",
 			url: this.action,
-			data: $(this).serialize,
+			data: $(this).serialize(), //data
 			success: function (response) {
 				let $ul = $("div.ingredients ul")
 				$ul.append(response);
