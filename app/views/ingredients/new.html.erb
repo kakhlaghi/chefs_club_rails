@@ -1,0 +1,6 @@
+<%= fields_for(DishIngredient.new) do |ingredient_form_builder| %>
+<%= dish_ingredient_fields.number_field :quantity %>
+    <%= dish_ingredient_fields.label "Ingredient" %>
+    <%= dish_ingredient_fields.fields_for :ingredients, @dish.ingredients.new do |name| %>
+      <%= name.text_field :name %>
+<%end%>

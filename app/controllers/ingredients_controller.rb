@@ -15,6 +15,11 @@ class IngredientsController < ApplicationController
     #render :index
   end
 
+  def new
+    render :layout =>false
+  end
+
+
 
 private
 

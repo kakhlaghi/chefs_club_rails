@@ -14,15 +14,13 @@
 
   <%= f.label "Quantity" %>
   <%= f.fields_for :dish_ingredients, @dish.dish_ingredients.new do |dish_ingredient_fields| %>
-    <%= dish_ingredient_fields.number_field :quantity %>
-    <%= dish_ingredient_fields.label "Ingredient" %>
-    <%= dish_ingredient_fields.fields_for :ingredients, @dish.ingredients.new do |name| %>
-      <%= name.text_field :name %>
-      <%end%>
+    <%= render 'ingredients/fields', :dish_ingredient_fields => dish_ingredient_fields %>
   <%end%>
 <br>
+
 </fieldset>
-   <%= submit_tag 'Submit Dish' %>
+<!--<button id="button" data-url="/dishes/ingredients/new"> add another ingredient form</button>-->
+<%= submit_tag 'Submit Dish' %>
 <%end%>
 
 <div id="dishResult">
@@ -32,9 +30,17 @@
   <p id="dishIngredientQuantity"</p>
 </div>
 
+
+
+
+
+
+
+
+
 <!-- lets use this for the ingredients addition NOT DONE-->
 
-<script type="text/javascript" charset="utf-8">
+<!--<script type="text/javascript" charset="utf-8">
     $(function(){
       $('#new_dish').on("submit", function(event){
         event.preventDefault();
@@ -54,4 +60,4 @@
         }
       });
     });
-</script>
+</script>-->

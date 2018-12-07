@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#create'
   get '/chefs/:id/dishes/new' => 'dishes#new'
   get '/chefs/:id/dishes/:id' => 'dishes#show'
+  get '/dishes/ingredients/new' => 'ingredients#new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -54,3 +54,16 @@ function newIngredient() {
 		})
 	});
 }
+
+function moreIngredients (){
+	$("button").click(function(event){
+		let $button = $(this);
+		let url = $(this).data("url")
+		$.get(url, function(response){
+			console.log(response)
+			$button.before(response)
+		})
+
+		event.preventDefault();
+	})
+}
