@@ -42,10 +42,6 @@ function fetchChefs(clicked_id) {
 	})
 }
 
-function fetchChefDetails() {
-	// ajax   '/chefs/:id
-	
-}
 
 function newIngredient() {
 	// $('#new_ingredients').on("submit", function (event) {
@@ -79,7 +75,7 @@ function newIngredient() {
 }
 
 function moreIngredients (){
-	$("button").click(function(event){
+	$("#button-new-ingr").click(function(event){
 		let $button = $(this);
 		let url = $(this).data("url")
 		$.get(url, function(response){
@@ -91,9 +87,3 @@ function moreIngredients (){
 	})
 }
 
-class menu{
-	constructor(dish, price){
-		this.dish = dish;
-		this.price = price;
-	}
-}

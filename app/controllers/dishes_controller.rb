@@ -2,6 +2,10 @@ require 'pry'
 class DishesController < ApplicationController
   before_action :set_dish, only: [:show, :edit, :update, :destroy]
 
+  def favorites
+    respond_to do |format|
+  end
+
   def show
     @dish = Dish.find(params[:id])
     respond_to do |format|
