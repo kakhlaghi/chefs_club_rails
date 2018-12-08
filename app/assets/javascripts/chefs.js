@@ -8,10 +8,14 @@ $(function () {
 
 function favoritesManager(){
     const baseURL = 'localhost:3000'
-    //let url = "/dishes" + 
+    const url = window.location.href 
 	if(Favorites){
-        fetch
-	}
+        fetch(url)
+          .then(response=>response.json)
+          .then(json)
+	}else{
+    Favorites.new(dish)
+  }
 }
 
 class Favorites{
@@ -25,3 +29,4 @@ class Favorites{
 Favorites.prototype.addToFavorites = function(dish){
 	this.array.push(dish)
 };
+
