@@ -8,23 +8,26 @@ $(function () {
 
 function favoritesManager(){
     const baseURL = 'localhost:3000'
-	const url = window.location.href 
-	fetch(url)
-          .then(response=>response.json)
-          .then(json)
+	const url = window.location.href + '.json';
 
-	if(Favorites){
-        Favorites.addToFavorites(dish)
-	}else{
-    	Favorites.new(dish)
-  }
+	let postData = {
+		dish: document.getElementsByClassName('.dishName')
+	}
+	debugger
+	//get the data
+	fetch(url,{
+		method: 'POST',
+		body: JSON.stringify(postData)
+	})
+		  .then(response=>response.json())
+		  .then(json=>new Favorites(json))
+		  .then(console.log(Favorites))
+
 }
 
 class Favorites{
 	constructor(dish){
-		this.dish = dish;
-		this.chef = dish.chef.id
-		this.array = [];
+		this.array = [dish];
 	}
 }
 

@@ -1,4 +1,6 @@
 <a href="#" class="js-next" data-chef="<%=@dish.chef.id%>" data-id="<%=@dish.id%>">Next Dish</a>
+<br>
+<button onclick="favoritesManager()">Add to favorites</button>
 <h2 class="dishName"><%= @dish.name%></h2>
 <p class="dishCookTime"><%= @dish.cook_time%> minutes</p>
 <!--partial for ingredients -->
@@ -24,6 +26,8 @@
 
 <%= link_to "Edit", edit_dish_path(@dish) %><br>
 <%= link_to "Delete", dish_path(@dish), method: :delete, data: { confirm: 'are you sure?'} %>
+
+
 
 <script type="text/javascript" charset="utf-8">
   $(function() {
