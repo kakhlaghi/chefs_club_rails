@@ -3,6 +3,7 @@
   Quick Dishes:
   <br>
   <% @chef.dishes.less_than_30.each do |dish| %>
+    
   <ul>
     <li><a href="<%=@chef.id%>/dishes/<%=dish.id%>"><%= dish.name%></a></li>
   </ul>

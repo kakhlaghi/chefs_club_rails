@@ -8,13 +8,15 @@ $(function () {
 
 function favoritesManager(){
     const baseURL = 'localhost:3000'
-    const url = window.location.href 
-	if(Favorites){
-        fetch(url)
+	const url = window.location.href 
+	fetch(url)
           .then(response=>response.json)
           .then(json)
+
+	if(Favorites){
+        Favorites.addToFavorites(dish)
 	}else{
-    Favorites.new(dish)
+    	Favorites.new(dish)
   }
 }
 
