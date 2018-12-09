@@ -37,13 +37,16 @@
       let nextId = parseInt($(".js-next").attr("data-id")) + 1;
       $.get("/chefs/" + chefId + "/dishes/" + nextId + ".json", function(data){
         let dish = data;
-      
+        console.log(dish)
         $(".dishName").text(dish["name"]);
         $(".dishCookTime").text(dish["cook_time"]);
-        /$(".dishItem").text(dish["ingredients"]) this probs needs work/
-        $(".js-next").attr("data-id", dish["id"]);
-        <!-- not done -->
-
+      dish["dish_ingredients"].forEach(function(dish_in, index){
+        $(".dishItem").text(dish_in["quantity"])
+    })
+      dish["ingredients"].forEach(function(dish_in, index) {
+        $(".dishItem").append(dish_in["name"])
+        })
+    $(".js-next").attr("data-id", dish["id"]);
       })
     })
   });

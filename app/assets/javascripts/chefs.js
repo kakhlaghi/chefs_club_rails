@@ -4,6 +4,9 @@ $(function () {
 	//listenForIngredientIndex()
 	//listenForFetchChefs()
 	//newIngredient()
+	if(Favorites == 'undefined'){
+		const chefFav = new Favorites();
+	}
 });
 
 function favoritesManager(){
@@ -20,7 +23,7 @@ function favoritesManager(){
 		body: JSON.stringify(postData)
 	})
 		  .then(response=>response.json())
-		  .then(json=>new Favorites(json))
+		  .then(json=>Favorites.addToFavorites(json))
 		  .then(console.log(Favorites))
 
 }
