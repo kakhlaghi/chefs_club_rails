@@ -1,11 +1,12 @@
 //favorites
+let favoriteStore = {faveDishes: []} 
 
 $(function () {
 	//listenForIngredientIndex()
 	//listenForFetchChefs()
 	//newIngredient()
-	
 });
+
 
 function favoritesManager(){
     const baseURL = 'localhost:3000'
@@ -16,13 +17,14 @@ function favoritesManager(){
 	//get the data
 	fetch(url)
 		  .then(response=>response.json())
-		  .then(json=>Favorites(json).call(chefFavorite))
+		  .then(json=> chefFavorite.addToFavorites(json))
 		  console.log(chefFavorite)
 }
 
 class Favorites{
-	constructor(dish){
-		this.array = [dish];
+	constructor(){
+		this.array = [];
+		favoriteStore.faveDishes.push(this)
 	}
 }
 
