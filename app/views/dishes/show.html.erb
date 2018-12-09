@@ -35,18 +35,19 @@
       event.preventDefault()
       let chefId = parseInt($(".js-next").attr("data-chef"));
       let nextId = parseInt($(".js-next").attr("data-id")) + 1;
+      console.log("dish id value" + nextId)
       $.get("/chefs/" + chefId + "/dishes/" + nextId + ".json", function(data){
         let dish = data;
         console.log(dish)
         $(".dishName").text(dish["name"]);
         $(".dishCookTime").text(dish["cook_time"]);
-      dish["dish_ingredients"].forEach(function(dish_in, index){
-        $(".dishItem").text(dish_in["quantity"])
-    })
-      dish["ingredients"].forEach(function(dish_in, index) {
-        $(".dishItem").append(dish_in["name"])
-        })
-    $(".js-next").attr("data-id", dish["id"]);
+        let i;
+      for(i=0;i<dish["ingredients"].length;i++){
+        $(".dishItem").text(dish["dish_ingredients"][i]["quantity"]);
+        $(".dishItem").append(dish["ingredients"][i]["name"]);
+        console.log("i value" + i)
+      }
+      $(".js-next").attr("data-id", dish["id"]);
       })
     })
   });
