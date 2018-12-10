@@ -1,11 +1,12 @@
 <h1>Chef <%=@chef.name%></h1>
 <br>
-<button onClick="<%=render 'favorites'%>">Show Favorites</button>
+
+<button id="favoritesHead" onclick="renderFavorites()"> Show Favorites </button>
+<br>
 <% if @chef.dishes.any? %>
   Quick Dishes:
   <br>
   <% @chef.dishes.less_than_30.each do |dish| %>
-    
   <ul>
     <li><a href="<%=@chef.id%>/dishes/<%=dish.id%>"><%= dish.name%></a></li>
   </ul>
