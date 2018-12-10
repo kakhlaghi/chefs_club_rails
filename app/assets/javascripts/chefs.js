@@ -27,13 +27,13 @@ function favoritesFetcher(){
 	function renderFavorites(){
 		let target = document.querySelector('#favoritesHead')
 		let div = document.createElement('p');
-		debugger
 		const favoritesArray = favoriteStore["faveDishes"][0]["array"];
 		for(i=0;i<favoritesArray.length;i++){
-			div.append = favoriteStore["faveDishes"][0]["array"][i]["name"];
+			div.innerHTML = favoriteStore["faveDishes"][0]["array"][i]["name"];
 		}
 		target.parentNode.insertBefore(div, target);
 		//$("<span>Hello world!</span>").insertAfter("h2");
+		
 	}
 
 	class Favorites{
@@ -46,4 +46,5 @@ function favoritesFetcher(){
 	Favorites.prototype.addToFavorites = function(dish){
 		this.array.push(dish)
 	};
+
 
