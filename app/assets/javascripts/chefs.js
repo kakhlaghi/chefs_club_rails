@@ -24,6 +24,12 @@ function favoritesFetcher(){
 		  console.log(chefFavorite)
 	}
 
+	function renderFavorites(){
+		let target = document.querySelector('#h1')
+		let div = document.createElement('div');
+
+	}
+
 	class Favorites{
 		constructor(){
 			this.array = [];

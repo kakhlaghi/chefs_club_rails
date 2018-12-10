@@ -1,4 +1,6 @@
 <h1>Chef <%=@chef.name%></h1>
+<br>
+<button onClick="<%=render 'favorites'%>">Show Favorites</button>
 <% if @chef.dishes.any? %>
   Quick Dishes:
   <br>
@@ -28,6 +30,8 @@
   <p> No dishes yet! </p>
 <%end%>
 <a href="/chefs/<%=@chef.id%>/dishes/new">Add a dish!</a>
+<br>
+
 
 
 
