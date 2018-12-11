@@ -1,5 +1,8 @@
+<%if @dish.ingredients != [] %>
 <ul id="ingredientsList">
 <% @dish.dish_ingredients.each.with_index do |di, index| %>
     <li class="dishItem"><%= di.quantity %> <%= di.ingredient.name %></li>
 <%end%>
 <ul/>
+<%end%>
+
