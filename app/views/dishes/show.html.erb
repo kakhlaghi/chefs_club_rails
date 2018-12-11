@@ -48,15 +48,16 @@
         console.log("i value" + i);
       }
       i=0;
-    let list = document.createElement("ul");
-    
+    let list = document.createElement("li");
+    let container = document.createElement("ul")
     let element = document.getElementById("ingredientsList")      
       for(i=0;i<qtyList.length;i++){
         <!--insertList = '<li>' + qtyList[i] +' '+ nameList[i] + '</li>'-->
-        let node = document.createTextNode(`${qtyList[i]} ${nameList[i]}`);
+        let node = document.createTextNode(`${qtyList[i]} ${nameList[i]} \n`);
+        console.log(nameList[i])
         list.appendChild(node);
       }
-      $(".dishItem").html(list)
+      $(".ingredients").html(list)
       <!--element.innerHTML(list)-->
       $(".js-next").attr("data-id", dish["id"]);
       })
