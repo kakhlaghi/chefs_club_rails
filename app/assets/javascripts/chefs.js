@@ -18,22 +18,20 @@ function favoritesFetcher(){
 		dish: document.getElementsByClassName('.dishName')
 	}
 	//get the data
-	fetch(url,{
-		method: 'PATCH',
-		headers: { 'Context-Type': 'applciation/json'},
-		body: JSON.stringify({array: this.data})//brings back key value pairs
-	})
-		  .then(response=>response.json())//arrow functions
+	fetch(url)
+		  .then(response=>response.json())//arrow functions,
 		  .then(json=> chefFavorite.addToFavorites(json))
 		  console.log(chefFavorite)
-	}
-
+		  alert('Added!')
+}
+	
 	function renderFavorites(){
 		let target = document.querySelector('#favoritesHead')
 		let div = document.createElement('p');
-		const favoritesArray = favoriteStore["faveDishes"][0]["array"];
+		let favoritesArray = favoriteStore["faveDishes"][0]["array"];
+		debugger
 		for(i=0;i<favoritesArray.length;i++){
-			div.innerHTML = favoriteStore["faveDishes"][0]["array"][i]["name"];
+			div.append(favoritesArray[i]["name"] +' takes: ' + favoritesArray[i]["cook_time"] + ' minutes');
 		}
 		target.parentNode.insertBefore(div, target);
 		//$("<span>Hello world!</span>").insertAfter("h2");
@@ -49,6 +47,7 @@ function favoritesFetcher(){
 
 	Favorites.prototype.addToFavorites = function(dish){
 		this.array.push(dish)
+		return this.array
 	};
 
 
