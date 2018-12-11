@@ -27,8 +27,6 @@
 <%= link_to "Edit", edit_dish_path(@dish) %><br>
 <%= link_to "Delete", dish_path(@dish), method: :delete, data: { confirm: 'are you sure?'} %>
 
-
-
 <script type="text/javascript" charset="utf-8">
   $(function() {
     $(".js-next").on("click", function(event) {
@@ -40,13 +38,26 @@
         let dish = data;
         console.log(dish)
         $(".dishName").text(dish["name"]);
-        $(".dishCookTime").text(dish["cook_time"]);
+        $(".dishCookTime").text(dish["cook_time"] + ' minutes');
         let i;
+        let qtyList = [];
+        let nameList = [];
       for(i=0;i<dish["ingredients"].length;i++){
-        $(".dishItem").text(dish["dish_ingredients"][i]["quantity"]);
-        $(".dishItem").append(dish["ingredients"][i]["name"]);
-        console.log("i value" + i)
+        qtyList.push(parseFloat(dish["dish_ingredients"][i]["quantity"]) + " ");
+        nameList.push(dish["ingredients"][i]["name"]);
+        console.log("i value" + i);
       }
+      i=0;
+    let list = document.createElement("ul");
+    
+    let element = document.getElementById("ingredientsList")      
+      for(i=0;i<qtyList.length;i++){
+        <!--insertList = '<li>' + qtyList[i] +' '+ nameList[i] + '</li>'-->
+        let node = document.createTextNode(`${qtyList[i]} ${nameList[i]}`);
+        list.appendChild(node);
+      }
+      $(".dishItem").html(list)
+      <!--element.innerHTML(list)-->
       $(".js-next").attr("data-id", dish["id"]);
       })
     })

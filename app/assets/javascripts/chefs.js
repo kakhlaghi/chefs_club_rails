@@ -18,8 +18,12 @@ function favoritesFetcher(){
 		dish: document.getElementsByClassName('.dishName')
 	}
 	//get the data
-	fetch(url)
-		  .then(response=>response.json())
+	fetch(url,{
+		method: 'PATCH',
+		headers: { 'Context-Type': 'applciation/json'},
+		body: JSON.stringify({array: this.data})//brings back key value pairs
+	})
+		  .then(response=>response.json())//arrow functions
 		  .then(json=> chefFavorite.addToFavorites(json))
 		  console.log(chefFavorite)
 	}

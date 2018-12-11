@@ -1,5 +1,5 @@
 <% @dish.dish_ingredients.each.with_index do |di, index| %>
-<ul>
+<ul id="ingredientsList">
     <li class="dishItem"><%= di.quantity %> <%= di.ingredient.name %></li>
 </ul>
 <%end%>
