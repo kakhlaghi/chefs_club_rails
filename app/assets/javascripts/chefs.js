@@ -7,8 +7,8 @@ $(function () {
 
 });
 
-
 let favoriteStore = {faveDishes: []} 
+
 
 function favoritesFetcher(){
 	let chefFavorite = new Favorites()
