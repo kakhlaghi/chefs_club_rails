@@ -9,17 +9,21 @@
   Cook Time:<%= f.number_field :cook_time %> minutes
   <br>
 
+
   <fieldset>
   <h3>Add new ingredients</h3><br>
-
+<div id="ingredient-fields-wrap">
   <%= f.label "Quantity" %>
   <%= f.fields_for :dish_ingredients, @dish.dish_ingredients.new do |dish_ingredient_fields| %>
     <%= render 'ingredients/fields', :dish_ingredient_fields => dish_ingredient_fields %>
   <%end%>
+  <br>
+</div>
 <br>
-
 </fieldset>
-<!--<button id="button-new-ingr" data-url="/dishes/ingredients/new"> add another ingredient form</button>-->
+
+
+<button id="button-new-ingr" data-url="/dishes/ingredients/new"> add another ingredient form</button>
 <%= submit_tag 'Submit Dish' %>
 <%end%>
 

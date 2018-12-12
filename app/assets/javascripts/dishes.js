@@ -2,6 +2,7 @@ $(function () {
 	listenForIngredientIndex()
 	//listenForFetchChefs()
 	newIngredient()
+	moreIngredients()
 });
 
 // listeners.....
@@ -78,12 +79,28 @@ function moreIngredients (){
 	$("#button-new-ingr").click(function(event){
 		let $button = $(this);
 		let url = $(this).data("url")
-		$.get(url, function(response){
+		const max_fields = 5;
+		event.preventDefault();
+		let x=0
+		if(x < max_fields){ //max input box allowed
+			x++; //text box increment
+		$("#ingredient-fields-wrap").append(
+			`
+			<label for="dish_Quantity">Quantity</label>
+			
+			  <input type="number" name="dish[dish_ingredients_attributes][${x+1}][quantity]" id="dish_dish_ingredients_attributes_${x+1}_quantity">
+			  <label for="dish_dish_ingredients_attributes_${x+1}_Ingredient">Ingredient</label>
+			  
+				<input type="text" name="dish[dish_ingredients_attributes][${x+1}][ingredients][name]" id="dish_dish_ingredients_attributes_${x+1}_ingredients_name">
+		  
+			<br>
+		  `); //add input box
+		}
+
+		/*$.get(url, function(response){
 			console.log(response)
 			$button.before(response)
-		})
-
-		event.preventDefault();
+		})*/
 	})
 }
 
