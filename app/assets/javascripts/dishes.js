@@ -1,8 +1,10 @@
 $(function () {
 	listenForIngredientIndex()
-	//listenForFetchChefs()
+	listenForFetchChefs()
 	//newIngredient()
 	moreIngredients()
+	/*$(document).on "turbolinks:load", ->
+  alert "page has loaded!"*/
 
 });
 
@@ -14,6 +16,7 @@ function listenForIngredientIndex() {
 }
 function listenForFetchChefs(clicked_id){
 	$(".js-more").on("click", fetchChefs())
+	console.log("hello")
 }
 
 // fetchers .....

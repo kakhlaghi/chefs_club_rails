@@ -7,11 +7,13 @@ $(function () {
 
 });
 
-let favoriteStore;
-
-function favoritesFetcher(){
+// function favoritesManager(){
+	let favoriteStore;
+	//let faveManagerObj = new Object
+//can create an object? and store favoritesFetcher and favoritesRender functions
+	function favoritesFetcher(){
+			//can't declare and assign here because of hoisting, i think. tried using scope function.
 	favoriteStore = {faveDishes: []} 
-
 	let chefFavorite = new Favorites()
 	const url = window.location.href + '.json';
 	let postData = {
@@ -23,8 +25,7 @@ function favoritesFetcher(){
 		  .then(json=> chefFavorite.addToFavorites(json))
 		  console.log(chefFavorite)
 		  alert('Added!')
-}
-	
+	}
 	function renderFavorites(){
 		let target = document.querySelector('#favoritesHead')
 		let div = document.createElement('p');
@@ -37,12 +38,31 @@ function favoritesFetcher(){
 		//$("<span>Hello world!</span>").insertAfter("h2");
 		return favoriteStore;
 	}
+	//faveManagerObj.favoritesFetcher = favoritesFetcher
+	//faveManagerObj.renderFavorites = renderFavorites
+//}
 
 	class Favorites{
 		constructor(){
 			this.array = [];
 			favoriteStore.faveDishes.push(this)
 		}
+	}
+
+	class Chef{
+		constructor(data){
+			this.name = data.name
+			this.id = data.id
+			this.dishes = []
+			data.dishes.forEach(function(dish){
+				newDish = new Dish(dish)
+				this.dishes.push(newDish)
+			})
+		}
+	}
+
+	Chef.prototype.renderDishList = function(dish){
+		//some html maybe
 	}
 
 	Favorites.prototype.addToFavorites = function(dish){
