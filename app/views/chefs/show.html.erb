@@ -31,7 +31,8 @@
 <%else%>
   <p> No dishes yet! </p>
 <%end%>
-<a href="/chefs/<%=@chef.id%>/dishes/new">Add a dish!</a>
+<!--<%= link_to "New Recipe", new_dish_path(current_user), :id => "new-dish" %>-->
+<a id="new-dish" href="/chefs/<%=@chef.id%>/dishes/new">Add a dish!</a>
 <br>
 
 

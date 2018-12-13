@@ -7,6 +7,7 @@ $(function () {
 
 });
 
+
 // function favoritesManager(){
 	let favoriteStore;
 	//let faveManagerObj = new Object
@@ -52,12 +53,10 @@ $(function () {
 	class Chef{
 		constructor(data){
 			this.name = data.name
+			this.email = data.email
+			this.password = data.password
 			this.id = data.id
 			this.dishes = []
-			data.dishes.forEach(function(dish){
-				newDish = new Dish(dish)
-				this.dishes.push(newDish)
-			})
 		}
 	}
 

@@ -2,11 +2,13 @@
 <br>
 <button onclick="favoritesFetcher()">Add to favorites</button>
 
+<div id="dish-display">
 <h2 class="dishName"><%= @dish.name%></h2>
 <p class="dishCookTime"><%= @dish.cook_time%> minutes</p>
 <!--partial for ingredients -->
 <div class="ingredients">
   <%= render 'ingredients/ingredients' %>
+</div>
 </div>
 
 <%= form_for @dish do |f| %>
@@ -36,6 +38,8 @@
       let nextId = parseInt($(".js-next").attr("data-id")) + 1;
       console.log("dish id value" + nextId)
       $.get("/chefs/" + chefId + "/dishes/" + nextId + ".json", function(data){
+        // let newDish = new Dish(data)
+        // newDish.renderLI()
         let dish = data;
         console.log(dish)
         $(".dishName").text(dish["name"]);

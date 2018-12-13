@@ -8,12 +8,13 @@ class DishesController < ApplicationController
       format.html {render :show}
       format.json {render json: @dish}
     end
-
     #render json: @dish.to_json
   end
 
   def new
-    @dish = Dish.new
+    @dish = Dish.new(chef_id: params[:chef_id])
+    @user = current_user
+    render :partial => 'dishes/form'
   end
 
   def create
@@ -21,9 +22,14 @@ class DishesController < ApplicationController
     #@dish.reject {|item| !item.present?}
     @dish.chef_id = session[:chef_id]
     if @dish.save
-      redirect_to chef_path(session[:chef_id])
+      #redirect_to chef_path(session[:chef_id])
+      respond_to do |format|
+        format.html {render :show}
+        format.json {render json: @dish}
+      end
     else
-      render :new
+      #render :new
+      render json: @dish, status: 406
     end
   end
 

@@ -1,3 +1,4 @@
+
 <% if @dish.errors.any? %>
 <% @dish.errors.full_messages.each do |msg| %>
   <li><%= msg %></li>
@@ -8,8 +9,6 @@
   Name:<%= f.text_field :name %>
   Cook Time:<%= f.number_field :cook_time %> minutes
   <br>
-
-
   <fieldset>
   <h3>Add new ingredients</h3><br>
 <div id="ingredient-fields-wrap">
@@ -19,6 +18,7 @@
   <%end%>
   <br>
 </div>
+
 <br>
 <button id="button-new-ingr" data-url="/dishes/ingredients/new"> add another ingredient form</button>
 
@@ -33,13 +33,6 @@
   <p id="dishIngredientName"></p>
   <p id="dishIngredientQuantity"</p>
 </div>
-
-
-
-
-
-
-
 
 
 <!-- lets use this for the ingredients addition NOT DONE-->

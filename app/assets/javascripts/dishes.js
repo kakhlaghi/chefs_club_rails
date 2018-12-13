@@ -1,27 +1,16 @@
-$(function () {
-	listenForIngredientIndex()
-	listenForFetchChefs()
-	//newIngredient()
+//$(document).on ('turbolinks:load',function () {
+	$(function() {
 	moreIngredients()
 	/*$(document).on "turbolinks:load", ->
   alert "page has loaded!"*/
-
+	listenForsubmitIngredients()
+	getFormPartial()
 });
 
-// listeners.....
-function listenForIngredientIndex() {
-	// when something is clicked
-	// fetchDishes()
-	$()
-}
+//listeners
 function listenForFetchChefs(clicked_id){
 	$(".js-more").on("click", fetchChefs())
 	console.log("hello")
-}
-
-// fetchers .....
-function fetchDishes() {
-	// ajax   '/chefs/:id/dishes
 }
 
 function fetchChefs(clicked_id) {
@@ -46,6 +35,76 @@ function fetchChefs(clicked_id) {
 		}
 	})
 }
+
+function listenForsubmitIngredients(){
+	$('.edit_dish').on("submit", function(event){
+		return submitIngredients(event)
+	}) 
+}
+
+
+
+//this is where i'm working
+function getFormPartial() {
+	const newRecipeLink = document.getElementById("new-dish");
+  	newRecipeLink.addEventListener('click', function(event){
+	event.preventDefault();
+
+	const address = this.attributes.href.textContent;
+  $.get(address).done(function(resp){
+	$("#dish-display").html(resp);
+	debugger
+	addListenerToForm();
+	})
+  })
+}
+
+function addListenerToForm() {
+	const form = document.getElementsByClassName("new_dish")
+	form.addEventListener('submit', function(event){
+	  event.preventDefault();
+	  const data = $(this).serialize();
+	  const url = this.action;
+	  postDataFromForm(url, data);
+	})
+  }
+  function postDataFromForm(url, data) {
+	$.ajax({
+	  type: "POST",
+	  url: url,
+	  data: data,
+	  success: function(response) {
+		const mydish = new Dish(response);
+		document.getElementById("dish-display").innerHTML = myRecipe.createDishDisplay();
+	  },
+	  error: function(res) {
+		console.log("fail:" + res)
+	  }
+	})
+  }
+
+class Dish {
+	constructor(data) {
+	  this.name = data.name
+	  this.cook_time = attr.cook_time
+	  this.ingredients = data.ingredients
+	  this.dish_ingredients_attributes = attr.dish_ingredients_attributes
+	}
+  }
+  
+  Dish.prototype.createDishDisplay = function() {
+	let customHTML = `<h2>${this.name}</h2>`;
+	customHTML += `<p><strong>Time Required:</strong> ${this.cook_time} minutes</p><ul>`;
+	for (let i = 0; i < this.dish_ingredients_attributes.length; i ++) {
+	  customHTML += `<li>${this.ish_ingredients_attributes[i].quantity} ${this.ingredients[i].name}</li>`
+	}
+	customHTML += `</ul><p>${this.instructions}</p>`;
+	return customHTML;
+  }
+
+
+
+
 
 
 /*function newIngredient() {
@@ -104,3 +163,19 @@ function moreIngredients (){
 	})
 }
 
+
+
+/*let data = {
+	'authenticity_token': $("input[name='authenticty_token']").val(),
+	'dish': {
+		'name': document.getElementsByClassName('dishName')[0].innerHTML,
+		'cook_time': parseFloat(document.getElementsByClassName('dishCookTime')[0].innerHTML),
+		'dish_ingredients_attributes':	{
+		'quantity': $('#dish_dish_ingredients_attributes_0_quantity').val(),
+			'ingredients': {
+				'name': $('#dish_dish_ingredients_attributes_0_ingredients_name').val()
+				}
+			}
+		}
+	}	
+*/
