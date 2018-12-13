@@ -7,12 +7,12 @@ $(function () {
 
 });
 
-let favoriteStore = {faveDishes: []} 
-
+let favoriteStore;
 
 function favoritesFetcher(){
+	favoriteStore = {faveDishes: []} 
+
 	let chefFavorite = new Favorites()
-    const baseURL = 'localhost:3000'
 	const url = window.location.href + '.json';
 	let postData = {
 		dish: document.getElementsByClassName('.dishName')
@@ -29,13 +29,13 @@ function favoritesFetcher(){
 		let target = document.querySelector('#favoritesHead')
 		let div = document.createElement('p');
 		let favoritesArray = favoriteStore["faveDishes"][0]["array"];
-		debugger
+		
 		for(i=0;i<favoritesArray.length;i++){
 			div.append(favoritesArray[i]["name"] +' takes: ' + favoritesArray[i]["cook_time"] + ' minutes');
 		}
 		target.parentNode.insertBefore(div, target);
 		//$("<span>Hello world!</span>").insertAfter("h2");
-		
+		return favoriteStore;
 	}
 
 	class Favorites{
@@ -47,7 +47,7 @@ function favoritesFetcher(){
 
 	Favorites.prototype.addToFavorites = function(dish){
 		this.array.push(dish)
-		return this.array
+		//return this.array
 	};
 
 

@@ -1,7 +1,7 @@
 $(function () {
 	listenForIngredientIndex()
 	//listenForFetchChefs()
-	newIngredient()
+	//newIngredient()
 	moreIngredients()
 
 });
@@ -45,7 +45,7 @@ function fetchChefs(clicked_id) {
 }
 
 
-function newIngredient() {
+/*function newIngredient() {
 	// $('#new_ingredients').on("submit", function (event) {
 	$('.edit_dish').on("submit", function (event) {
 		console.log("hit using class")
@@ -62,7 +62,7 @@ function newIngredient() {
 					}
 				}
 			}
-		}*/
+		}
 		event.preventDefault();
 		$.ajax({
 			type: "PATCH",
@@ -74,13 +74,12 @@ function newIngredient() {
 			}
 		})
 	});
-}
+}*/
 
 function moreIngredients (){
 	let x=1
 	let id=0
 	$("#button-new-ingr").click(function(event){
-		
 		let $button = $(this);
 		let url = $(this).data("url")
 		let max_fields = 5;
@@ -93,11 +92,8 @@ function moreIngredients (){
 			  <input type="number" name="dish[dish_ingredients_attributes][${id}][quantity]" id="dish_dish_ingredients_attributes_${id}_quantity">
 			  <label for="dish_dish_ingredients_attributes_${id}_Ingredient">Ingredient</label>
 				<input type="text" name="dish[dish_ingredients_attributes][${id}][ingredients][name]" id="dish_dish_ingredients_attributes_${id}_ingredients_name">
-			<br>
-		  `); 
-		  //add input box
+			<br>`);  //add input box
 		}
-
 		/*$.get(url, function(response){
 			console.log(response)
 			$button.before(response)
