@@ -7,7 +7,6 @@ $(function () {
 
 });
 
-
 // function favoritesManager(){
 	let favoriteStore;
 	//let faveManagerObj = new Object
