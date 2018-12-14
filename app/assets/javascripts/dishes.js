@@ -63,7 +63,8 @@ function addListenerToForm() {
 	form[0].addEventListener('submit', function(event){
 	  event.preventDefault();
 	  const data = $(this).serialize();
-	  const url = this.action;
+		const url = this.action + '.json';
+		debugger
 	  postDataFrom(url, data);
 	})
   }
@@ -71,11 +72,11 @@ function postDataFrom(url, data) {
 	$.ajax({
 	  type: "POST",
 	  url: url,
-	  data: data,
+		data: data,
 	  success: function(response) {
 		const mydish = new Dish(response);
 		debugger
-		document.getElementById("dish-display").innerHTML = mydish.createDishDisplay();
+		document.getElementById("dish-form-content").innerHTML = mydish.createDishDisplay();
 	  },
 	  error: function(res) {
 		console.log("fail:" + res)
@@ -88,15 +89,15 @@ class Dish {
 	  this.name = data.name
 	  this.cook_time = data.cook_time
 	  this.ingredients = data.ingredients
-		this.dish_ingredients_attributes = data.dish_ingredients_attributes
+		this.dish_ingredients = data.dish_ingredients
 	}
   }
   
   Dish.prototype.createDishDisplay = function() {
 	let customHTML = `<h2>${this.name}</h2>`;
 	customHTML += `<p><strong>Cook Time:</strong> ${this.cook_time} minutes</p><ul>`;
-	for (let i = 0; i < this.dish_ingredients_attributes.length; i ++) {
-	  customHTML += `<li>${this.ish_ingredients_attributes[i].quantity} ${this.ingredients[i].name}</li>`
+	for (let i = 0; i < this.dish_ingredients.length; i ++) {
+	  customHTML += `<li>${this.dish_ingredients[i].quantity} ${this.ingredients[i].name}</li>`
 	}
 	customHTML += `</ul><p>${this.instructions}</p>`;
 	return customHTML;
