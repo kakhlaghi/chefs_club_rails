@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/chefs/:id/dishes/new' => 'dishes#new'
   get '/chefs/:id/dishes/:id' => 'dishes#show'
   get '/dishes/ingredients/new' => 'ingredients#new'
-  
+  get'/landing', to: "recipes#landing"
+  post '/landing', to: "recipes#landing"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -64,7 +64,7 @@ function addListenerToForm() {
 	  event.preventDefault();
 	  const data = $(this).serialize();
 		const url = this.action + '.json';
-		debugger
+		
 	  postDataFrom(url, data);
 	})
   }
@@ -75,7 +75,7 @@ function postDataFrom(url, data) {
 		data: data,
 	  success: function(response) {
 		const mydish = new Dish(response);
-		debugger
+		
 		document.getElementById("new_dish").innerHTML = mydish.createDishDisplay();
 	  },
 	  error: function(res) {
@@ -99,7 +99,7 @@ class Dish {
 	for (let i = 0; i < this.dish_ingredients.length; i ++) {
 	  customHTML += `<li>${this.dish_ingredients[i].quantity} ${this.ingredients[i].name}</li>`
 	}
-	customHTML += `</ul><p>${this.instructions}</p>`;
+	customHTML += `</ul><a href=${window.location.href}>Continue to Chef Page</p>`;
 	return customHTML;
   }
 

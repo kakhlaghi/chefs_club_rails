@@ -11,6 +11,10 @@ class DishesController < ApplicationController
     #render json: @dish.to_json
   end
 
+  def landing
+
+  end
+
   def new
     @dish = Dish.new(chef_id: params[:chef_id])
     @chef = current_user
