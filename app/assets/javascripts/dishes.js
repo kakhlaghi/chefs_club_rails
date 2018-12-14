@@ -1,5 +1,5 @@
-//$(document).on ('turbolinks:load',function () {
-	$(function() {
+$(document).on ('turbolinks:load',function () {
+//	$(function() {
 	moreIngredients()
 	/*$(document).on "turbolinks:load", ->
   alert "page has loaded!"*/
@@ -99,7 +99,7 @@ class Dish {
 	for (let i = 0; i < this.dish_ingredients.length; i ++) {
 	  customHTML += `<li>${this.dish_ingredients[i].quantity} ${this.ingredients[i].name}</li>`
 	}
-	customHTML += `</ul><a href=${window.location.href}>Continue to Chef Page</p>`;
+	customHTML += `</ul><a href=${window.location.href}>Continue</p>`;
 	return customHTML;
   }
 
@@ -138,7 +138,7 @@ class Dish {
 		})
 	});
 }*/
-
+//adds more ingredient fields
 function moreIngredients (){
 	let x=1
 	let id=0
