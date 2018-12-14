@@ -60,21 +60,22 @@ function getFormPartial() {
 
 function addListenerToForm() {
 	const form = document.getElementsByClassName("new_dish")
-	form.addEventListener('submit', function(event){
+	form[0].addEventListener('submit', function(event){
 	  event.preventDefault();
 	  const data = $(this).serialize();
 	  const url = this.action;
-	  postDataFromForm(url, data);
+	  postDataFrom(url, data);
 	})
   }
-  function postDataFromForm(url, data) {
+function postDataFrom(url, data) {
 	$.ajax({
 	  type: "POST",
 	  url: url,
 	  data: data,
 	  success: function(response) {
 		const mydish = new Dish(response);
-		document.getElementById("dish-display").innerHTML = myRecipe.createDishDisplay();
+		debugger
+		document.getElementById("dish-display").innerHTML = mydish.createDishDisplay();
 	  },
 	  error: function(res) {
 		console.log("fail:" + res)
@@ -85,15 +86,15 @@ function addListenerToForm() {
 class Dish {
 	constructor(data) {
 	  this.name = data.name
-	  this.cook_time = attr.cook_time
+	  this.cook_time = data.cook_time
 	  this.ingredients = data.ingredients
-	  this.dish_ingredients_attributes = attr.dish_ingredients_attributes
+		this.dish_ingredients_attributes = data.dish_ingredients_attributes
 	}
   }
   
   Dish.prototype.createDishDisplay = function() {
 	let customHTML = `<h2>${this.name}</h2>`;
-	customHTML += `<p><strong>Time Required:</strong> ${this.cook_time} minutes</p><ul>`;
+	customHTML += `<p><strong>Cook Time:</strong> ${this.cook_time} minutes</p><ul>`;
 	for (let i = 0; i < this.dish_ingredients_attributes.length; i ++) {
 	  customHTML += `<li>${this.ish_ingredients_attributes[i].quantity} ${this.ingredients[i].name}</li>`
 	}

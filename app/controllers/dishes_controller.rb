@@ -25,8 +25,8 @@ class DishesController < ApplicationController
     if @dish.save
       #redirect_to chef_path(session[:chef_id])
       respond_to do |format|
-        format.html {render @chef}
-        format.json {render json: @chef}
+        format.html {render :show}
+        format.json {render json: @dish}
       end
     else
       #render :new
