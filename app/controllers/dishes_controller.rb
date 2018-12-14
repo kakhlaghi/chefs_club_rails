@@ -4,6 +4,7 @@ class DishesController < ApplicationController
 
   def show
     @dish = Dish.find(params[:id])
+    @chef = current_user
     respond_to do |format|
       format.html {render :show}
       format.json {render json: @dish}
