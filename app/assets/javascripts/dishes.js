@@ -76,7 +76,7 @@ function postDataFrom(url, data) {
 	  success: function(response) {
 		const mydish = new Dish(response);
 		debugger
-		document.getElementById("dish-form-content").innerHTML = mydish.createDishDisplay();
+		document.getElementById("new_dish").innerHTML = mydish.createDishDisplay();
 	  },
 	  error: function(res) {
 		console.log("fail:" + res)
