@@ -11,6 +11,11 @@ class DishesController < ApplicationController
     #render json: @dish.to_json
   end
 
+  def landing
+
+  end
+
+
   def new
     @dish = Dish.new(chef_id: params[:chef_id])
     @chef = current_user
@@ -24,10 +29,10 @@ class DishesController < ApplicationController
     @chef = current_user
     if @dish.save
       #redirect_to chef_path(session[:chef_id])
-      respond_to do |format|
-        format.html {render :show}
+      #respond_to do |format|
+        #format.html {render :show}
         format.json {render json: @dish}
-      end
+      #end
     else
       #render :new
       render json: @dish, status: 406
