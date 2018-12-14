@@ -1,6 +1,6 @@
 $(document).on ('turbolinks:load',function () {
 //	$(function() {
-	moreIngredients()
+	//moreIngredients()
 	/*$(document).on "turbolinks:load", ->
   alert "page has loaded!"*/
 	listenForsubmitIngredients()
@@ -53,6 +53,7 @@ function getFormPartial() {
 	const address = this.attributes.href.textContent;
   $.get(address).done(function(resp){
 	$("body").html(resp);
+	moreIngredients()
 	addListenerToForm();
 	})
   })
@@ -60,11 +61,11 @@ function getFormPartial() {
 
 function addListenerToForm() {
 	const form = document.getElementsByClassName("new_dish")
+	//listen for addmore ingredient fields button after form is rendered to DOM
 	form[0].addEventListener('submit', function(event){
 	  event.preventDefault();
 	  const data = $(this).serialize();
 		const url = this.action + '.json';
-		
 	  postDataFrom(url, data);
 	})
   }
@@ -75,7 +76,6 @@ function postDataFrom(url, data) {
 		data: data,
 	  success: function(response) {
 		const mydish = new Dish(response);
-		
 		document.getElementById("new_dish").innerHTML = mydish.createDishDisplay();
 	  },
 	  error: function(res) {
