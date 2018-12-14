@@ -13,7 +13,7 @@ class DishesController < ApplicationController
 
   def new
     @dish = Dish.new(chef_id: params[:chef_id])
-    @user = current_user
+    @chef = current_user
     render :partial => 'dishes/form'
   end
 
@@ -21,11 +21,12 @@ class DishesController < ApplicationController
     @dish = Dish.new(dish_params)
     #@dish.reject {|item| !item.present?}
     @dish.chef_id = session[:chef_id]
+    @chef = current_user
     if @dish.save
       #redirect_to chef_path(session[:chef_id])
       respond_to do |format|
-        format.html {render :show}
-        format.json {render json: @dish}
+        format.html {render @chef}
+        format.json {render json: @chef}
       end
     else
       #render :new

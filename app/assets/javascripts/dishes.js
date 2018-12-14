@@ -46,14 +46,13 @@ function listenForsubmitIngredients(){
 
 //this is where i'm working
 function getFormPartial() {
-	const newRecipeLink = document.getElementById("new-dish");
+	const newRecipeLink = document.getElementById("new-dish-link");
   	newRecipeLink.addEventListener('click', function(event){
 	event.preventDefault();
 
 	const address = this.attributes.href.textContent;
   $.get(address).done(function(resp){
-	$("#dish-display").html(resp);
-	debugger
+	$("body").html(resp);
 	addListenerToForm();
 	})
   })
