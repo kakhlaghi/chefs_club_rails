@@ -11,6 +11,7 @@ $(function () {
 	let favoriteStore;
 	//let faveManagerObj = new Object
 //can create an object? and store favoritesFetcher and favoritesRender functions
+//or reassignment in function?
 	function favoritesFetcher(){
 			//can't declare and assign here because of hoisting, i think. tried using scope function.
 	favoriteStore = {faveDishes: []} 

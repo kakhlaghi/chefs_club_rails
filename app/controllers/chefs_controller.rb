@@ -4,6 +4,7 @@ class ChefsController < ApplicationController
 
   def index
     @chefs = Chef.all
+    @chef = current_user
     respond_to do |format|
       format.html {render :index}
       format.json {render json: @chefs}
