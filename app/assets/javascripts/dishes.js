@@ -52,7 +52,7 @@ function sortAlphabetically(){
 	const url = 'http://localhost:3000/dishes.json'
 	let data
 		$.get(url).done(function(resp){
-		  resp.sort(function(a, b) {
+			 resp.sort(function(a, b) {
 				const nameA = a.name.toUpperCase(); // ignore upper and lowercase
 				const nameB = b.name.toUpperCase(); // ignore upper and lowercase
 				if (nameA < nameB) {
@@ -64,22 +64,11 @@ function sortAlphabetically(){
 			// names must be equal
 					return 0;
 			})
-			data = resp
-		})
-		const postURL=window.location.href
-		debugger
-			$.ajax({
-				type: "POST",
-				url: postURL,
-				data: data,
-				success: function(response) {
-					console.log("works:" + response)
-					document.getElementById("dish-holder").innerHTML = response
-					},
-				error: function(response) {
-					console.log("fail:" + response)
-					}
-			})	
+			resp.forEach((dish, index) => {
+			 data += `<li><a href="${dish["chef"]["id"]}/dishes/${dish["id"]}">${dish["name"]}' by '${dish["chef"]["name"]}</a></li><br> `
+			});
+			document.getElementById("dish-holder").innerHTML = data
+		})	
 	})
 }
 
