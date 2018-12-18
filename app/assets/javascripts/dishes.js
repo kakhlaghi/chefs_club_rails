@@ -1,15 +1,18 @@
-$(document).on ('turbolinks:load',function () {
+$(document).on('turbolinks:load',function () {
 //	$(function() {
+	console.log("test")
 	//moreIngredients()
 	/*$(document).on "turbolinks:load", ->
   alert "page has loaded!"*/
 	listenForsubmitIngredients()
 	getFormPartial()
+	listenForFetchChefs()
+	sortAlphabetically()
 });
 
 //listeners
 function listenForFetchChefs(clicked_id){
-	$(".js-more").on("click", fetchChefs())
+	$(".js-more").on("click", fetchChefs)
 	console.log("hello")
 }
 
@@ -41,26 +44,63 @@ function listenForsubmitIngredients(){
 		return submitIngredients(event)
 	}) 
 }
-
+//alphabetical live coding
+function sortAlphabetically(){
+	//takes array of dish names and sorts alphabetically
+	//no page refresh
+	$("#js-sort-alpha").on("click", function(){
+	const url = 'http://localhost:3000/dishes.json'
+	let data
+		$.get(url).done(function(resp){
+		  resp.sort(function(a, b) {
+				const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+				const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+				if (nameA < nameB) {
+					return -1;
+				}
+				if (nameA > nameB) {
+					return 1;
+				}
+			// names must be equal
+					return 0;
+			})
+			data = resp
+		})
+		const postURL=window.location.href
+		debugger
+			$.ajax({
+				type: "POST",
+				url: postURL,
+				data: data,
+				success: function(response) {
+					console.log("works:" + response)
+					document.getElementById("dish-holder").innerHTML = response
+					},
+				error: function(response) {
+					console.log("fail:" + response)
+					}
+			})	
+	})
+}
 
 
 //this is where i'm working
 function getFormPartial() {
 	const newRecipeLink = document.getElementById("new-dish-link");
-  	newRecipeLink.addEventListener('click', function(event){
-	event.preventDefault();
+  newRecipeLink.addEventListener('click', function(event){
+		event.preventDefault();
 
 	const address = this.attributes.href.textContent;
   $.get(address).done(function(resp){
-	$("body").html(resp);
-	moreIngredients()
-	addListenerToForm();
-	})
+		$("body").html(resp);
+		moreIngredients()
+		addListenerToForm();
+		})
   })
 }
 
 function addListenerToForm() {
-	const form = document.getElementsByClassName("new_dish")
+	const form = document.getElementsByClassName("new_dish") //switch to use ID only one type of thing
 	//listen for addmore ingredient fields button after form is rendered to DOM
 	form[0].addEventListener('submit', function(event){
 	  event.preventDefault();
@@ -87,20 +127,20 @@ function postDataFrom(url, data) {
 class Dish {
 	constructor(data) {
 	  this.name = data.name
-	  this.cook_time = data.cook_time
+	  this.cookTime = data.cook_time
 	  this.ingredients = data.ingredients
-		this.dish_ingredients = data.dish_ingredients
+		this.dishIngredients = data.dish_ingredients
 	}
   }
   
   Dish.prototype.createDishDisplay = function() {
-	let customHTML = `<h2>${this.name}</h2>`;
-	customHTML += `<p><strong>Cook Time:</strong> ${this.cook_time} minutes</p><ul>`;
-	for (let i = 0; i < this.dish_ingredients.length; i ++) {
-	  customHTML += `<li>${this.dish_ingredients[i].quantity} ${this.ingredients[i].name}</li>`
-	}
-	customHTML += `</ul><a href=${window.location.href}>Continue</p>`;
-	return customHTML;
+		let customHTML = `<h2>${this.name}</h2>`;
+		customHTML += `<p><strong>Cook Time:</strong> ${this.cookTime} minutes</p><ul>`;
+		for (let i = 0; i < this.dishIngredients.length; i ++) {
+	  	customHTML += `<li>${this.dishIngredients[i].quantity} ${this.ingredients[i].name}</li>`
+		}
+		customHTML += `</ul><a href=${window.location.href}>Continue</p>`;
+		return customHTML;
   }
 
 
@@ -132,4 +172,4 @@ function moreIngredients (){
 		})*/
 	})
 }
-
+console.log("hello")

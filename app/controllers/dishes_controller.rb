@@ -2,6 +2,10 @@ require 'pry'
 class DishesController < ApplicationController
   before_action :set_dish, only: [:show, :edit, :update, :destroy]
 
+  def index
+    render json: Dish.all
+  end
+
   def show
     @dish = Dish.find(params[:id])
     @chef = current_user

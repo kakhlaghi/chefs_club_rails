@@ -42,7 +42,9 @@ $(function () {
 	//faveManagerObj.favoritesFetcher = favoritesFetcher
 	//faveManagerObj.renderFavorites = renderFavorites
 //}
-
+//TODO: put favorites on the DOM and add to each chef... chef has many favorites? 
+//or add new category can be boolean to dishes isFavorite...
+//probably gonna require full restructuring 
 	class Favorites{
 		constructor(){
 			this.array = [];

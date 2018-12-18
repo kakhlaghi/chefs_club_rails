@@ -5,6 +5,7 @@
 <button id="favoritesHead" onclick="renderFavorites()"> Show Favorites </button>
 
 <br>
+<div id="dish-holder">
 <% if @chef.dishes.any? %>
   Quick Dishes:
   <br>
@@ -13,6 +14,8 @@
     <li><a href="<%=@chef.id%>/dishes/<%=dish.id%>"><%= dish.name%></a></li>
   </ul>
   <%end%>
+  <button id="js-sort-alpha">Sort alphabetically</button>
+  <br>
   <br>
   Little More Time:
   <br>
@@ -34,7 +37,9 @@
 <%end%>
 <!--<%= link_to "New Recipe", new_dish_path(current_user), :id => "new-dish" %>-->
 <br>
+</div>
 <div class="form-holder"></div>
+
 
 
 
