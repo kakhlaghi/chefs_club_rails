@@ -9,15 +9,16 @@ $(document).on('turbolinks:load',function () {
 });
 
 //listeners
-function listenForFetchChefs(clicked_id){
+function listenForFetchChefs(){
 	$(".js-more").on("click", fetchChefs)
-	console.log("hello")
+	console.log(this)
 }
 
-function fetchChefs(clicked_id) {
+function fetchChefs() {
 	// ajax   '/chefs
-	console.log("hit fetch")
-	let id = clicked_id-1
+	let clickedId = this.dataset.id
+	let id = clickedId-1
+	console.log("clicked id is", clickedId)
 	console.log(id)
 	$.get("/chefs.json", function(data){
 		let chefs = data;
@@ -27,12 +28,12 @@ function fetchChefs(clicked_id) {
 		let dishList = "";
 		if(dishes == 0){
 			newChefText = "<strong>New Chef!</strong>";
-			$("#chef-" + clicked_id).html(newChefText);
+			$("#chef-" + clickedId).html(newChefText);
 		} else{
 			dishes.forEach(function(dish){
 				dishList += '<ol class="js-dish">' + "Dish Name: " + dish["name"] + " | Cook Time: " + dish["cook_time"] + '</ol>';		
 			})
-			$("#chef-" + clicked_id).html(dishList);
+			$("#chef-" + clickedId).html(dishList);
 		}
 	})
 }
@@ -62,7 +63,7 @@ function sortAlphabetically(){
 			// names must be equal
 					return 0;
 			})
-			resp.forEach((dish, index) => {
+			resp.forEach((dish) => {
 			 data += `<li><a href="${dish["chef"]["id"]}/dishes/${dish["id"]}">${dish["name"]}' by '${dish["chef"]["name"]}</a></li><br> `
 			});
 			document.getElementById("dish-holder").innerHTML = data
