@@ -2,8 +2,6 @@ $(document).on('turbolinks:load',function () {
 //	$(function() {
 	console.log("test")
 	//moreIngredients()
-	/*$(document).on "turbolinks:load", ->
-  alert "page has loaded!"*/
 	listenForsubmitIngredients()
 	getFormPartial()
 	listenForFetchChefs()
@@ -97,7 +95,8 @@ function addListenerToForm() {
 		const url = this.action + '.json';
 	  postDataFrom(url, data);
 	})
-  }
+}
+
 function postDataFrom(url, data) {
 	$.ajax({
 	  type: "POST",
@@ -111,7 +110,7 @@ function postDataFrom(url, data) {
 		console.log("fail:" + res)
 	  }
 	})
-  }
+}
 
 class Dish {
 	constructor(data) {
@@ -120,7 +119,7 @@ class Dish {
 	  this.ingredients = data.ingredients
 		this.dishIngredients = data.dish_ingredients
 	}
-  }
+}
   
   Dish.prototype.createDishDisplay = function() {
 		let customHTML = `<h2>${this.name}</h2>`;
@@ -131,9 +130,6 @@ class Dish {
 		customHTML += `</ul><a href=${window.location.href}>Continue</p>`;
 		return customHTML;
   }
-
-
-
 
 
 //adds more ingredient fields
@@ -155,10 +151,6 @@ function moreIngredients (){
 				<input type="text" name="dish[dish_ingredients_attributes][${id}][ingredients][name]" id="dish_dish_ingredients_attributes_${id}_ingredients_name">
 			<br>`);  //add input box
 		}
-		/*$.get(url, function(response){
-			console.log(response)
-			$button.before(response)
-		})*/
 	})
 }
 console.log("hello")
