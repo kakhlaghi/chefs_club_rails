@@ -2,7 +2,10 @@
 
 Welcome to Chef Club on RAILS!
 
-Uses ruby 2.3.6
+2/20/2019 Now deployed on Heroku! https://chefs-club-rails.herokuapp.com/
+
+
+Uses ruby 2.5.3
 Go ahead and bundle install to get the necessary gem files.
 You'll also likely ahve to rake db:migrate.
 
