@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2018_11_10_182741) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "chefs", force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
@@ -24,8 +27,8 @@ ActiveRecord::Schema.define(version: 2018_11_10_182741) do
 
   create_table "dish_ingredients", force: :cascade do |t|
     t.integer "quantity"
-    t.integer "ingredient_id"
-    t.integer "dish_id"
+    t.bigint "ingredient_id"
+    t.bigint "dish_id"
     t.index ["dish_id"], name: "index_dish_ingredients_on_dish_id"
     t.index ["ingredient_id"], name: "index_dish_ingredients_on_ingredient_id"
   end
@@ -35,7 +38,7 @@ ActiveRecord::Schema.define(version: 2018_11_10_182741) do
     t.float "cook_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "chef_id"
+    t.bigint "chef_id"
     t.index ["chef_id"], name: "index_dishes_on_chef_id"
   end
 
@@ -45,4 +48,7 @@ ActiveRecord::Schema.define(version: 2018_11_10_182741) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "dish_ingredients", "dishes"
+  add_foreign_key "dish_ingredients", "ingredients"
+  add_foreign_key "dishes", "chefs"
 end
